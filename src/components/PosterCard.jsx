@@ -1,9 +1,10 @@
 export default function PosterCard({ cafe }) {
     const img = cafe?.image || "/cafes/fallback.jpg";
+    const href = cafe?.slug ? `/cafe/${cafe.slug}` : "#"; // usar slug
   
     return (
       <a
-        href="#detalle" // luego lo cambiamos a /cafe/[slug]
+        href={href}
         className="group relative block rounded-2xl overflow-hidden
                    border border-zinc-800 bg-zinc-950
                    transition-transform duration-300 will-change-transform
@@ -36,4 +37,5 @@ export default function PosterCard({ cafe }) {
       </a>
     );
   }
+  
   

@@ -17,7 +17,7 @@ export default function WelcomeUser() {
 
   return (
     <div className="mt-4 mb-6 rounded-xl border border-zinc-800 bg-zinc-900 p-4 text-zinc-100">
-      {`Bienvenido de nuevo, ${name}. Esto es lo que hemos estado viendo...`}
+      {`Bienvenido de nuevo, ${name}. Chusmea donde tomar tu proxima taza de café...`}
     </div>
   );
 }
