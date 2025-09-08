@@ -2,16 +2,19 @@
 import '../styles/global.css';
 import Layout from '../layouts/Layout.astro';
 import Welcome from '../components/Welcome.astro';
-import CafeGrid from '../components/CafeGrid.jsx';
-import '../styles/fonts.css';
 import SiteHeader from '../components/SiteHeader.astro';
+import WelcomeUser from '../components/WelcomeUser.jsx'; 
+import CafeGrid from '../components/CafeGrid.jsx';
 import cafes from '../data/cafes.json';
+import '../styles/fonts.css';
+
 
 ---
 
 <Layout>
   <Welcome />
   <SiteHeader />
+  <WelcomeUser client:load />  
 
   <!-- Bienvenida dinámica según localStorage.userName -->
 <div id="welcome-user" class="hidden mt-4 mb-6 rounded-xl border border-zinc-800 bg-zinc-900 p-4 text-zinc-100">

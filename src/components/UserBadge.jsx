@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
 
+function dispatchUserChange(name) {
+  try {
+    window.dispatchEvent(new CustomEvent("user:change", { detail: { name } }));
+  } catch {}
+}
+
 export default function UserBadge() {
   const [name, setName] = useState("");
 
@@ -16,12 +22,14 @@ export default function UserBadge() {
       const v = n.trim();
       setName(v);
       try { localStorage.setItem("userName", v); } catch {}
+      dispatchUserChange(v);           // <- avisa a toda la app
     }
   };
 
   const logout = () => {
     setName("");
     try { localStorage.removeItem("userName"); } catch {}
+    dispatchUserChange("");            // <- limpia el saludo
   };
 
   const initials = name
@@ -44,3 +52,4 @@ export default function UserBadge() {
     </button>
   );
 }
+
