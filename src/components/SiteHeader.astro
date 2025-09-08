@@ -1,0 +1,61 @@
+---
+const links = [
+  { href: '/', label: 'Explorar' },
+  { href: '#ciudades', label: 'Actividad' },
+  { href: '#acerca', label: 'Acerca' },
+];
+const { activePage = '/' } = Astro.props;
+import ThemeSwitcher from './ThemeSwitcher.astro';
+import UserBadge from './UserBadge.jsx'; 
+---
+<header class="sticky top-0 z-50 border-b border-zinc-800 bg-black/70 backdrop-blur">
+  <nav class="mx-auto max-w-6xl px-4 h-14 flex items-center justify-between font-light w-full">
+    <!-- Marca -->
+    <a href="/" class="flex items-center gap-2">
+      <!-- Si tenés un logo en /public/logo.png, descomentá la línea de abajo -->
+      <!-- <img src="/logo.png" alt="Cafeboxd" class="h-6 w-6" /> -->
+      <span class="sigmar-ff text-lg tracking-wide">Cafeboxd</span>
+    </a>
+
+    <!-- Links desktop -->
+    <div class="hidden sm:flex sm:gap-8">
+      {links.map(l => (
+        <a
+          href={l.href}
+          class={`hover:text-white ${activePage === l.href ? 'text-white' : 'text-zinc-300'}`}
+        >
+          {l.label}
+        </a>
+      ))}
+    </div>
+
+  <div class="flex items-center gap-3">
+    <UserBadge client:load />   
+    <ThemeSwitcher />                                    
+  <button id="hamburger-menu" class="sm:hidden text-2xl leading-none">☰</button>
+  </div>
+
+
+  <!-- Menú mobile -->
+  <div id="mobile-links" class="hidden font-light w-full">
+    <div class="flex flex-col gap-2 p-4 bg-black/70 backdrop-blur border-b border-zinc-800">
+      <button class="close-menu self-end text-xl">❌</button>
+      {links.map(l => (
+        <a href={l.href} class="block text-zinc-200 hover:text-white">{l.label}</a>
+      ))}
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  const menuBtn = document.querySelector('#hamburger-menu');
+  const mobile = document.querySelector('#mobile-links');
+  const closeBtn = document.querySelector('#mobile-links .close-menu');
+
+  menuBtn?.addEventListener('click', () => {
+    mobile?.classList.remove('hidden');
+  });
+  closeBtn?.addEventListener('click', () => {
+    mobile?.classList.add('hidden');
+  });
+</script>

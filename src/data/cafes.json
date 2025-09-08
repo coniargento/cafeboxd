@@ -1,0 +1,12 @@
+[
+    { "name": "Mode Café", "city": "Barracas", "rating": 4.6, "image": "/cafes/mode.jpg" },
+    { "name": "Puzzi", "city": "Barracas", "rating": 4.6, "image": "/cafes/puzzi.jpg"},
+    { "name": "Cuervo", "city": "Palermo", "rating": 4.9, "image": "/cafes/cuervo.jpg"},
+    { "name": "Nica cafe", "city": "San telmo", "rating": 3.5, "image": "/cafes/nica.jpg"},
+    { "name": "Amelia", "city": "Caballito", "rating": 3.9, "image": "/cafes/amelia.jpg"},
+    { "name": "Mode Café", "city": "Barracas", "rating": 4.6, "image": "/cafes/mode.jpg" },
+    { "name": "Puzzi", "city": "Barracas", "rating": 4.6, "image": "/cafes/puzzi.jpg"},
+    { "name": "Cuervo", "city": "Palermo", "rating": 4.9, "image": "/cafes/cuervo.jpg"},
+    { "name": "Nica cafe", "city": "San telmo", "rating": 3.5, "image": "/cafes/nica.jpg"},
+    { "name": "Amelia", "city": "Caballito", "rating": 3.9, "image": "/cafes/amelia.jpg"}
+]

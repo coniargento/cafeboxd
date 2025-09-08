@@ -1,0 +1,40 @@
+---
+/* sin props */
+---
+<button
+  id="theme-toggle"
+  aria-label="Cambiar tema"
+  class="h-9 w-9 grid place-items-center rounded-full
+         border border-zinc-500
+         bg-white text-black
+         dark:bg-zinc-900 dark:text-white
+         shadow-sm"
+>
+  🌓
+</button>
+
+<script is:inline>
+  (() => {
+    const root = document.documentElement;
+    const btn = document.getElementById('theme-toggle');
+
+    // estado inicial (localStorage o preferencia del sistema)
+    try {
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+      if (stored === 'dark' || (!stored && prefersDark)) root.classList.add('dark');
+      else root.classList.remove('dark');
+    } catch {}
+
+    const setIcon = () => {
+      btn.textContent = root.classList.contains('dark') ? '☀️' : '🌙';
+    };
+    setIcon();
+
+    btn.addEventListener('click', () => {
+      const nowDark = root.classList.toggle('dark');
+      try { localStorage.setItem('theme', nowDark ? 'dark' : 'light'); } catch {}
+      setIcon();
+    });
+  })();
+</script>

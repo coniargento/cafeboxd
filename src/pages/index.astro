@@ -1,11 +1,38 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import '../styles/global.css';
 import Layout from '../layouts/Layout.astro';
+import Welcome from '../components/Welcome.astro';
+import CafeGrid from '../components/CafeGrid.jsx';
+import '../styles/fonts.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import cafes from '../data/cafes.json';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+  <Welcome />
+  <SiteHeader />
+
+  <!-- Bienvenida dinámica según localStorage.userName -->
+<div id="welcome-user" class="hidden mt-4 mb-6 rounded-xl border border-zinc-800 bg-zinc-900 p-4 text-zinc-100">
+  <!-- se completa por JS si hay usuario -->
+</div>
+<script is:inline>
+  (() => {
+    try {
+      const name = localStorage.getItem('userName');
+      if (!name) return;
+      const el = document.getElementById('welcome-user');
+      if (!el) return;
+      el.textContent = `Bienvenido de nuevo, ${name}. ¿Donde va a ser tu próxima taza de café?...`;
+      el.classList.remove('hidden');
+    } catch {}
+  })();
+</script>
+
+
+  <h2 class="mt-10 mb-4 text-2xl font-semibold">Cafeterías</h2>
+  <CafeGrid client:load cafes={cafes} />
+  
 </Layout>
+
