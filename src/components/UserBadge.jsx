@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import LoginModal from "./LoginModal.jsx";
 
 function dispatchUserChange(name) {
   try {
@@ -8,6 +9,7 @@ function dispatchUserChange(name) {
 
 export default function UserBadge() {
   const [name, setName] = useState("");
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   useEffect(() => {
     try {
@@ -16,14 +18,18 @@ export default function UserBadge() {
     } catch {}
   }, []);
 
+  // Escuchar cambios de usuario desde el modal
+  useEffect(() => {
+    const onChange = (e) => {
+      const n = e?.detail?.name || "";
+      setName(n);
+    };
+    window.addEventListener("user:change", onChange);
+    return () => window.removeEventListener("user:change", onChange);
+  }, []);
+
   const login = () => {
-    const n = prompt("Tu nombre de usuario:");
-    if (n && n.trim()) {
-      const v = n.trim();
-      setName(v);
-      try { localStorage.setItem("userName", v); } catch {}
-      dispatchUserChange(v);           // <- avisa a toda la app
-    }
+    setShowLoginModal(true);
   };
 
   const logout = () => {
@@ -36,20 +42,33 @@ export default function UserBadge() {
     ? name.split(" ").map(p => p[0]).join("").slice(0,2).toUpperCase()
     : "";
 
-  return name ? (
-    <div className="flex items-center gap-2">
-      <div className="h-7 w-7 rounded-full bg-zinc-700 text-white grid place-items-center text-xs">
-        {initials}
-      </div>
-      <span className="text-sm">{name}</span>
-      <button onClick={logout} className="text-xs text-zinc-400 hover:text-zinc-200 underline">
-        Salir
-      </button>
-    </div>
-  ) : (
-    <button onClick={login} className="text-sm px-3 py-1 rounded-lg border border-zinc-700 hover:bg-zinc-800">
-      Iniciar sesión
-    </button>
+  return (
+    <>
+      {name ? (
+        <div className="flex items-center gap-2">
+          <div className="h-7 w-7 rounded-full bg-zinc-700 text-white grid place-items-center text-xs">
+            {initials}
+          </div>
+          <span className="text-sm">{name}</span>
+          <button onClick={logout} className="text-xs text-zinc-400 hover:text-zinc-200 underline">
+            Salir
+          </button>
+        </div>
+      ) : (
+        <button 
+          onClick={login} 
+          data-login-trigger
+          className="text-sm px-3 py-1 rounded-lg border border-zinc-700 hover:bg-zinc-800"
+        >
+          Iniciar sesión
+        </button>
+      )}
+      
+      <LoginModal 
+        isOpen={showLoginModal} 
+        onClose={() => setShowLoginModal(false)} 
+      />
+    </>
   );
 }
 

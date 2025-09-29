@@ -5,6 +5,8 @@ import Welcome from '../components/Welcome.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import WelcomeUser from '../components/WelcomeUser.jsx'; 
 import CafeGrid from '../components/CafeGrid.jsx';
+import ReviewsSection from '../components/ReviewsSection.jsx';
+import HeroCarousel from '../components/HeroCarousel.jsx';
 import cafes from '../data/cafes.json';
 import '../styles/fonts.css';
 
@@ -12,11 +14,16 @@ import '../styles/fonts.css';
 ---
 
 <Layout>
-  <Welcome />
   <SiteHeader />
+  
+  <!-- Hero Section con Carrusel -->
+  <HeroCarousel client:load />
+
+  <!-- Welcome User Section (only shown when logged in) -->
+  <div class="max-w-6xl mx-auto px-4 py-8">
   <WelcomeUser client:load />  
 
-  <!-- Bienvenida dinámica según localStorage.userName -->
+    <!-- Fallback welcome message -->
 <div id="welcome-user" class="hidden mt-4 mb-6 rounded-xl border border-zinc-800 bg-zinc-900 p-4 text-zinc-100">
   <!-- se completa por JS si hay usuario -->
 </div>
@@ -33,9 +40,145 @@ import '../styles/fonts.css';
   })();
 </script>
 
+    <!-- Script para conectar el botón principal de login -->
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        const mainLoginBtn = document.getElementById('main-login-btn');
+        if (mainLoginBtn) {
+          mainLoginBtn.addEventListener('click', () => {
+            // Simular click en el botón de login del header
+            const headerLoginBtn = document.querySelector('[data-login-trigger]');
+            if (headerLoginBtn) {
+              headerLoginBtn.click();
+            }
+          });
+        }
+      });
+    </script>
+  </div>
 
-  <h2 class="mt-10 mb-4 text-2xl font-semibold">Cafeterías</h2>
+  <!-- Benefits Section (shown when not logged in) -->
+  <section id="benefits" class="bg-zinc-50 dark:bg-zinc-900 py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-zinc-900 dark:text-zinc-100">
+          Cafeboxd te permite...
+        </h2>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div class="text-center p-6 rounded-xl bg-white dark:bg-zinc-800 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">📝</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-zinc-900 dark:text-zinc-100">Registra cada café</h3>
+          <p class="text-zinc-600 dark:text-zinc-400">Lleva un registro de cada cafetería que visitas</p>
+        </div>
+        
+        <div class="text-center p-6 rounded-xl bg-white dark:bg-zinc-800 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">❤️</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-zinc-900 dark:text-zinc-100">Muestra tu amor</h3>
+          <p class="text-zinc-600 dark:text-zinc-400">Demostra tu interes con listas y reseñas favoritas con un "me gusta"</p>
+        </div>
+        
+        <div class="text-center p-6 rounded-xl bg-white dark:bg-zinc-800 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">✍️</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-zinc-900 dark:text-zinc-100">Escribe y comparte</h3>
+          <p class="text-zinc-600 dark:text-zinc-400">Escribi y comparti reseñas, y sigue a amigos y otros miembros para leer las suyas</p>
+        </div>
+        
+        <div class="text-center p-6 rounded-xl bg-white dark:bg-zinc-800 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">⭐</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-zinc-900 dark:text-zinc-100">Califica cada café</h3>
+          <p class="text-zinc-600 dark:text-zinc-400">Califica cada cafetería para registrar y compartir tu experiencia</p>
+        </div>
+        
+        <div class="text-center p-6 rounded-xl bg-white dark:bg-zinc-800 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-rose-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">📊</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-zinc-900 dark:text-zinc-100">Mantén un diario</h3>
+          <p class="text-zinc-600 dark:text-zinc-400">Lleva un diario de tu consumo de café</p>
+        </div>
+        
+        <div class="text-center p-6 rounded-xl bg-white dark:bg-zinc-800 shadow-lg hover:shadow-xl transition-shadow">
+          <div class="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">📋</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-zinc-900 dark:text-zinc-100">Crea listas</h3>
+          <p class="text-zinc-600 dark:text-zinc-400">Tené una lista de cafeterias que queres visitar</p>
+        </div>
+      </div>
+      
+      <!-- Stats Section -->
+      <div class="text-center bg-white dark:bg-zinc-800 rounded-2xl p-8 shadow-lg">
+        <h3 class="text-2xl font-bold mb-4 text-zinc-900 dark:text-zinc-100">Últimamente visitado...</h3>
+        <div class="text-4xl font-bold text-amber-600 dark:text-amber-400 mb-2">1,234,567</div>
+        <div class="text-lg text-zinc-600 dark:text-zinc-400">cafés visitados por nuestra comunidad</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Reviews Section (similar to Letterboxd) -->
+  <ReviewsSection client:load />
+
+  <!-- Cafes Section -->
+  <section id="cafes" class="max-w-6xl mx-auto px-4 py-12">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-white dark:to-zinc-300 bg-clip-text text-transparent">
+        Nuestras Cafeterías
+      </h2>
+      <p class="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+        Una selección cuidadosa de los mejores lugares para disfrutar del café en Buenos Aires
+      </p>
+    </div>
+    
   <CafeGrid client:load cafes={cafes} />
+  </section>
+
+  <!-- Features Section -->
+  <section id="about" class="bg-zinc-50 dark:bg-zinc-900 py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">¿Por qué Cafeboxd?</h2>
+        <p class="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+          Más que una guía, una comunidad de amantes del café
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center p-6 rounded-xl bg-white dark:bg-zinc-800 shadow-lg">
+          <div class="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">☕</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Cafés Únicos</h3>
+          <p class="text-zinc-600 dark:text-zinc-400">Descubre lugares con personalidad propia y cafés de especialidad</p>
+        </div>
+        
+        <div class="text-center p-6 rounded-xl bg-white dark:bg-zinc-800 shadow-lg">
+          <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">📍</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Ubicaciones Perfectas</h3>
+          <p class="text-zinc-600 dark:text-zinc-400">Encuentra cafeterías en los mejores barrios de Buenos Aires</p>
+        </div>
+        
+        <div class="text-center p-6 rounded-xl bg-white dark:bg-zinc-800 shadow-lg">
+          <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">⭐</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Reseñas Reales</h3>
+          <p class="text-zinc-600 dark:text-zinc-400">Calificaciones auténticas de la comunidad cafetera</p>
+        </div>
+      </div>
+    </div>
+  </section>
   
 </Layout>
 

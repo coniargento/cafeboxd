@@ -15,7 +15,7 @@ html, body {
   html.dark body { @apply bg-black text-zinc-100; }
   }
 
-/* util para ocultar scrollbar en shelves */
+/* ocultar scrollbar en shelves */
 .shelf-scroll {
   scrollbar-width: none;      /* Firefox */
 }
@@ -23,5 +23,179 @@ html, body {
   display: none;              /* WebKit */
 }
 
-  
-  
+/* Animaciones personalizadas */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mejoras para el scroll suave */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Estilos para el gradiente de texto */
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hover effects mejorados */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para las tarjetas de características */
+.feature-card {
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos para el modal de login */
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Asegurar que el modal esté centrado y visible */
+.modal-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 9999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.modal-content {
+  position: relative !important;
+  z-index: 10 !important;
+  margin: auto !important;
+}
+
+/* Animaciones para el modal */
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes modal-exit {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+}
+
+/* Estilos para el botón de Google */
+.google-button {
+  transition: all 0.2s ease;
+}
+
+.google-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos para inputs del modal */
+.modal-input {
+  transition: all 0.2s ease;
+}
+
+.modal-input:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+}
+
+/* Estilo Letterboxd para metadata del backdrop */
+.backdrop-metadata {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 12px 16px;
+  border-radius: 8px 0 0 0;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  z-index: 20;
+}
+
+.backdrop-metadata a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  display: block;
+}
+
+.backdrop-metadata a:hover {
+  color: #fbbf24;
+  text-decoration: underline;
+}
+
+.backdrop-metadata a:visited {
+  color: #ffffff;
+}
+
+/* Texto vertical para el carrusel - sin recuadro */
+.writing-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  line-height: 1.2;
+}
+
+.writing-vertical a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+.writing-vertical a:hover {
+  text-shadow: 0 2px 8px rgba(245, 158, 11, 0.6);
+  transform: scale(1.05);
+}

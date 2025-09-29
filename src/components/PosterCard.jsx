@@ -6,33 +6,57 @@ export default function PosterCard({ cafe }) {
       <a
         href={href}
         className="group relative block rounded-2xl overflow-hidden
-                   border border-zinc-800 bg-zinc-950
-                   transition-transform duration-300 will-change-transform
-                   hover:-translate-y-1 hover:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.6)]"
+                   border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950
+                   transition-all duration-300 will-change-transform
+                   hover:-translate-y-2 hover:shadow-2xl hover:shadow-black/20
+                   hover:border-zinc-300 dark:hover:border-zinc-700"
         aria-label={cafe?.name}
       >
-        {/* Póster 2:3 */}
+        {/* Imagen principal */}
         <div
-          className="aspect-[2/3] bg-zinc-800 bg-center bg-cover"
+          className="aspect-[4/5] bg-zinc-100 dark:bg-zinc-800 bg-center bg-cover relative overflow-hidden"
           style={{ backgroundImage: `url(${img})` }}
-        />
-  
-        {/* Overlay con info (aparece al hover) */}
-        <div className="pointer-events-none absolute inset-0
-                        flex items-end opacity-0 group-hover:opacity-100
-                        bg-gradient-to-t from-black/85 via-black/40 to-transparent
-                        transition-opacity">
-          <div className="w-full p-3">
-            <h3 className="text-base font-semibold leading-snug">{cafe?.name}</h3>
-            <p className="text-xs text-zinc-300">{cafe?.city}</p>
-          </div>
+        >
+          {/* Overlay sutil */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
   
-        {/* Chip de rating siempre visible */}
-        <div className="absolute bottom-2 right-2 rounded-full
-                        bg-black/80 border border-zinc-800 px-2 py-0.5
-                        text-xs text-zinc-200">
-          ★ {Number(cafe?.rating ?? 0).toFixed(1)}
+        {/* Información del café */}
+        <div className="p-4 space-y-2">
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-zinc-700 dark:group-hover:text-zinc-200 transition-colors">
+            {cafe?.name}
+          </h3>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">{cafe?.city}</p>
+          
+          {/* Rating con estrellas */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-1">
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <span
+                    key={i}
+                    className={`text-sm ${
+                      i < Math.floor(cafe?.rating || 0)
+                        ? 'text-amber-400'
+                        : 'text-zinc-300 dark:text-zinc-600'
+                    }`}
+                  >
+                    ★
+                  </span>
+                ))}
+              </div>
+              <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                {Number(cafe?.rating ?? 0).toFixed(1)}
+              </span>
+            </div>
+            
+            {/* Indicador de "Ver más" */}
+            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span className="text-xs text-zinc-500 dark:text-zinc-400 font-medium">
+                Ver detalles →
+              </span>
+            </div>
+          </div>
         </div>
       </a>
     );
