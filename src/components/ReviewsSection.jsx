@@ -107,7 +107,7 @@ export default function ReviewsSection() {
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           <div className="bg-zinc-50 dark:bg-zinc-900 rounded-xl p-6">
             <h3 className="text-xl font-bold mb-4 text-zinc-900 dark:text-zinc-100">
-              Reseñas populares esta semana
+              Reseñas populares de esta semana
             </h3>
             
             <div className="space-y-4">
@@ -145,9 +145,7 @@ export default function ReviewsSection() {
                       <span>❤️</span>
                       <span>{review.likes}</span>
                     </button>
-                    <button className="text-xs text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 transition-colors">
-                      Responder
-                    </button>
+                  
                   </div>
                 </div>
               ))}
@@ -167,9 +165,6 @@ export default function ReviewsSection() {
                 <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-2">
                   por <span className="font-medium">BaristaPro</span> • 15 cafeterías
                 </p>
-                <div className="flex gap-1 text-xs text-zinc-500 dark:text-zinc-400">
-                  <span>Mode Café</span> • <span>Cuervo</span> • <span>Puzzi</span>
-                </div>
               </div>
               
               <div className="border-l-4 border-blue-500 pl-4">
@@ -179,9 +174,6 @@ export default function ReviewsSection() {
                 <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-2">
                   por <span className="font-medium">RemoteWorker</span> • 12 cafeterías
                 </p>
-                <div className="flex gap-1 text-xs text-zinc-500 dark:text-zinc-400">
-                  <span>Mode Café</span> • <span>Amelia</span> • <span>Nica Café</span>
-                </div>
               </div>
             </div>
           </div>
