@@ -4,12 +4,36 @@ import Layout from '../layouts/Layout.astro';
 import Welcome from '../components/Welcome.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import WelcomeUser from '../components/WelcomeUser.jsx'; 
-import CafeGrid from '../components/CafeGrid.jsx';
 import ReviewsSection from '../components/ReviewsSection.jsx';
 import HeroCarousel from '../components/HeroCarousel.jsx';
-import cafes from '../data/cafes.json';
+import { getPopularCafesThisWeek } from '../services/serpapi.js';
 import '../styles/fonts.css';
 
+
+// Obtener cafés populares de la API
+let popularCafes = [];
+try {
+  popularCafes = await getPopularCafesThisWeek();
+  // Asegurar que tengan los campos necesarios
+  popularCafes = popularCafes.map(cafe => ({
+    name: cafe.name || 'Café',
+    slug: cafe.slug || cafe.name?.toLowerCase().replace(/\s+/g, '-') || 'cafe',
+    city: cafe.city || 'Buenos Aires',
+    rating: cafe.rating || 4.0,
+    image: cafe.image || '/cafes/fallback.jpg'
+  }));
+} catch (error) {
+  console.error('Error obteniendo cafés populares:', error);
+  // Fallback con cafés estáticos si falla la API
+  popularCafes = [
+    { name: "Mode Café", slug: "mode-cafe", city: "Barracas", rating: 4.6, image: "/cafes/mode.jpg" },
+    { name: "Puzzi", slug: "puzzi", city: "Barracas", rating: 4.6, image: "/cafes/puzzi.jpg" },
+    { name: "Cuervo", slug: "cuervo", city: "Palermo", rating: 4.9, image: "/cafes/cuervo.jpg" },
+    { name: "Nica cafe", slug: "nica-cafe", city: "San telmo", rating: 3.5, image: "/cafes/nica.jpg" },
+    { name: "Amelia", slug: "amelia", city: "Caballito", rating: 3.9, image: "/cafes/amelia.jpg" },
+    { name: "Café de Barrio", slug: "cafe-barrio", city: "Villa Crespo", rating: 4.2, image: "/cafes/fallback.jpg" }
+  ];
+}
 
 ---
 
@@ -56,6 +80,58 @@ import '../styles/fonts.css';
       });
     </script>
   </div>
+
+  <!-- Cafes Section (compacta) -->
+  <section id="cafes" class="max-w-6xl mx-auto px-4 py-8">
+    <div class="text-left mb-8">
+      <h2 class="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-white dark:to-zinc-300 bg-clip-text text-transparent">
+        Cafés Destacados
+      </h2>
+      <p class="text-sm text-zinc-600 dark:text-zinc-400 max-w-xl">
+        Algunos de los cafés más populares en Buenos Aires
+      </p>
+    </div>
+    
+    <!-- Grid compacto de cafés -->
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-8">
+      {popularCafes.map((cafe) => (
+        <a
+          href={`/cafe/${cafe.slug}`}
+          className="group block relative rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 text-left"
+          style={{ backgroundImage: `url(${cafe.image})` }}
+        >
+          <!-- Overlay de fondo -->
+          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-all duration-300"></div>
+          
+          <!-- Contenido de la card -->
+          <div className="relative z-10 p-3 h-full flex flex-col justify-between min-h-[120px]">
+            <!-- Información del café -->
+            <div>
+              <h3 className="text-xs font-semibold text-white group-hover:text-amber-300 transition-colors truncate text-left mb-1">
+                {cafe.name}
+              </h3>
+              <p className="text-xs text-zinc-300 truncate text-left">{cafe.city}</p>
+            </div>
+            
+            <!-- Rating con efecto hover -->
+            <div className="flex items-center justify-between mt-2">
+              <div className="flex items-center text-left">
+                <span className="text-xs text-amber-400">★</span>
+                <span className="text-xs text-white ml-1 font-medium">{cafe.rating.toFixed(1)}</span>
+              </div>
+              
+              <!-- Texto de estrellas que aparece en hover -->
+              <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span className="text-xs text-amber-300 font-medium">
+                  {cafe.rating.toFixed(1)} estrellas
+                </span>
+              </div>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
 
   <!-- Benefits Section (shown when not logged in) -->
   <section id="benefits" class="bg-zinc-50 dark:bg-zinc-900 py-16">
@@ -128,19 +204,6 @@ import '../styles/fonts.css';
   <!-- Popular Reviews Section (similar to Letterboxd) -->
   <ReviewsSection client:load />
 
-  <!-- Cafes Section -->
-  <section id="cafes" class="max-w-6xl mx-auto px-4 py-12">
-    <div class="text-center mb-12">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-white dark:to-zinc-300 bg-clip-text text-transparent">
-        Popular en cafeboxd
-      </h2>
-      <p class="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-        Las cafeterías más visitadas en Buenos Aires para disfrutar
-      </p>
-    </div>
-    
-  <CafeGrid client:load cafes={cafes} />
-  </section>
 
   <!-- Features Section
   <section id="about" class="bg-zinc-50 dark:bg-zinc-900 py-16">

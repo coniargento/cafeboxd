@@ -48,6 +48,11 @@ export default function PosterCard({ cafe }) {
               <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
                 {Number(cafe?.rating ?? 0).toFixed(1)}
               </span>
+              {cafe?.reviews && (
+                <span className="text-xs text-zinc-500 dark:text-zinc-400">
+                  ({cafe.reviews} reseñas)
+                </span>
+              )}
             </div>
             
             {/* Indicador de "Ver más" */}
@@ -57,6 +62,27 @@ export default function PosterCard({ cafe }) {
               </span>
             </div>
           </div>
+
+          {/* Información adicional de la API */}
+          {(cafe?.address || cafe?.price || cafe?.type) && (
+            <div className="space-y-1 pt-2 border-t border-zinc-200 dark:border-zinc-700">
+              {cafe?.type && (
+                <div className="text-xs text-amber-600 dark:text-amber-400 font-medium">
+                  {cafe.type}
+                </div>
+              )}
+              {cafe?.address && (
+                <div className="text-xs text-zinc-500 dark:text-zinc-400 truncate">
+                  📍 {cafe.address}
+                </div>
+              )}
+              {cafe?.price && (
+                <div className="text-xs text-green-600 dark:text-green-400">
+                  💰 {cafe.price}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </a>
     );

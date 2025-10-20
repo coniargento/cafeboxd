@@ -1,34 +1,65 @@
-import { useMemo, useState } from "react";
-import FilterBar from "./FilterBar.jsx";
-import CafeGrid from "./CafeGrid.jsx";
+import { useState, useEffect } from 'react';
+import CafeSearch from './CafeSearch.jsx';
+import CafeGrid from './CafeGrid.jsx';
+import { searchCafes } from '../services/serpapi.js';
 
-export default function CafeExplorer({ cafes=[] }) {
-  const [q, setQ] = useState("");
-  const [city, setCity] = useState("");
+export default function CafeExplorer({ initialCafes = [] }) {
+  const [cafes, setCafes] = useState(initialCafes);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const cities = useMemo(
-    () => Array.from(new Set(cafes.map(c => c.city))).sort(),
-    [cafes]
-  );
+  // Cargar cafés iniciales al montar el componente
+  useEffect(() => {
+    if (initialCafes.length === 0) {
+      loadInitialCafes();
+    }
+  }, []);
 
-  const filtered = useMemo(() => {
-    const ql = q.toLowerCase().trim();
-    return cafes.filter(c => {
-      const okQ = ql ? c.name.toLowerCase().includes(ql) : true;
-      const okCity = city ? c.city === city : true;
-      return okQ && okCity;
-    });
-  }, [cafes, q, city]);
+  const loadInitialCafes = async () => {
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      const initialResults = await searchCafes('cafe de especialidad Buenos Aires');
+      setCafes(initialResults);
+    } catch (err) {
+      console.error('Error cargando cafés iniciales:', err);
+      setError('No se pudieron cargar los cafés. Usando datos de ejemplo.');
+      // Mantener los datos estáticos como fallback
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleCafesFound = (newCafes) => {
+    setCafes(newCafes);
+    setError(null);
+  };
+
+  const handleLoading = (loading) => {
+    setIsLoading(loading);
+  };
+
+  const handleError = (errorMessage) => {
+    setError(errorMessage);
+    setIsLoading(false);
+  };
 
   return (
     <div>
-      <FilterBar q={q} setQ={setQ} city={city} setCity={setCity} cities={cities} />
-      <div className="mt-4">
-        <CafeGrid cafes={filtered} />
-        {filtered.length === 0 && (
-          <div className="text-zinc-400 mt-4">No hay resultados con esos filtros.</div>
-        )}
-      </div>
+      {/* Componente de búsqueda */}
+      <CafeSearch 
+        onCafesFound={handleCafesFound}
+        onLoading={handleLoading}
+        onError={handleError}
+      />
+      
+      {/* Grid de resultados */}
+      <CafeGrid 
+        cafes={cafes}
+        isLoading={isLoading}
+        error={error}
+      />
     </div>
   );
 }
