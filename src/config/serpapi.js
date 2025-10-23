@@ -1,8 +1,5 @@
 // Configuración de SerpApi
 export const SERPAPI_CONFIG = {
-  // Reemplaza con tu API key real
-  API_KEY: 'e57976d3e62c00e3e7d3dc0600067c1c265ba2e39634d4e49e1572d8921c55b2', // Tu API key de SerpApi
-  
   // Configuración por defecto
   DEFAULT_LOCATION: 'Buenos Aires, Argentina',
   DEFAULT_LANGUAGE: 'es',
@@ -39,10 +36,6 @@ export const SERPAPI_CONFIG = {
 export function getApiKey() {
   const envKey = process.env.SERPAPI_KEY;
   const configKey = SERPAPI_CONFIG.API_KEY;
-  
-  console.log('🔑 API Key check:');
-  console.log('  - process.env.SERPAPI_KEY:', envKey ? 'SET' : 'NOT SET');
-  console.log('  - SERPAPI_CONFIG.API_KEY:', configKey);
   
   return envKey || configKey;
 }

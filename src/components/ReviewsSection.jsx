@@ -36,74 +36,10 @@ export default function ReviewsSection() {
       console.error('❌ Error cargando reseñas:', error);
       setError('No se pudieron cargar las reseñas reales');
       
-      // Fallback con reseñas de ejemplo genéricas
-      setReviews([
-        {
-          id: 'fallback-1',
-          author: 'María González',
-          rating: 5,
-          text: 'Excelente café de especialidad, ambiente muy acogedor y personal súper amable.',
-          date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
-          placeName: 'Mode Café',
-          placeSlug: 'mode-cafe',
-          verified: true
-        },
-        {
-          id: 'fallback-2',
-          author: 'Carlos Rodríguez',
-          rating: 4,
-          text: 'Muy buen café, ambiente perfecto para trabajar y tienen wifi excelente.',
-          date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
-          placeName: 'Cuervo',
-          placeSlug: 'cuervo',
-          verified: false
-        },
-        {
-          id: 'fallback-3',
-          author: 'Ana Martínez',
-          rating: 5,
-          text: 'El mejor café que probé en Buenos Aires. Definitivamente volveré.',
-          date: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
-          placeName: 'Puzzi',
-          placeSlug: 'puzzi',
-          verified: true
-        },
-        {
-          id: 'fallback-4',
-          author: 'Diego Fernández',
-          rating: 4,
-          text: 'Café de calidad, buen ambiente. Ideal para una cita o para trabajar.',
-          date: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString(),
-          placeName: 'Nica Café',
-          placeSlug: 'nica-cafe',
-          verified: false
-        },
-        {
-          id: 'fallback-5',
-          author: 'Laura Sánchez',
-          rating: 5,
-          text: 'Increíble experiencia. El café tiene un sabor único y el lugar tiene una vibra muy especial.',
-          date: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString(),
-          placeName: 'Amelia',
-          placeSlug: 'amelia',
-          verified: true
-        },
-        {
-          id: 'fallback-6',
-          author: 'Roberto López',
-          rating: 3,
-          text: 'Café decente pero el servicio fue un poco lento. El ambiente está bien para charlar con amigos.',
-          date: new Date(Date.now() - 21 * 24 * 60 * 60 * 1000).toISOString(),
-          placeName: 'Café de Barrio',
-          placeSlug: 'cafe-barrio',
-          verified: false
-        }
-      ]);
     } finally {
       setLoading(false);
     }
   };
-
 
   const formatDate = (dateString) => {
     try {
