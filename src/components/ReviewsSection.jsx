@@ -21,7 +21,10 @@ export default function ReviewsSection() {
       const asd = await fetch('https://serpapi.com/search.json?q=cafe+de+especialidad&location=Buenos+Aires,+Argentina&hl=es&gl=ar&google_domain=google.com.ar&api_key=f74d6e17a69c1e5e383ad2b50fe0d209a81f730b0dd0538a451af7c23925995c', {
         mode: 'cors',
         headers: {
-          'Access-Control-Allow-Origin':'*'
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET',
+          'Access-Control-Allow-Headers': 'Content-Type'
         }
       });
 

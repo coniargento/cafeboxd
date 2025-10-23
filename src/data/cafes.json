@@ -1,11 +1,637 @@
-[
-        { "name": "Mode Café", "slug": "mode-cafe", "city": "Barracas", "rating": 4.6, "image": "/cafes/mode.jpg" },
-        { "name": "Puzzi", "slug": "puzzi", "city": "Barracas", "rating": 4.6, "image": "/cafes/puzzi.jpg" },
-        { "name": "Cuervo", "slug": "cuervo", "city": "Palermo", "rating": 4.9, "image": "/cafes/cuervo.jpg" },
-        { "name": "Nica cafe", "slug": "nica-cafe", "city": "San telmo", "rating": 3.5, "image": "/cafes/nica.jpg" },
-        { "name": "Amelia", "slug": "amelia", "city": "Caballito", "rating": 3.9, "image": "/cafes/amelia.jpg" },
-        { "name": "Cuadra", "slug": "Cuadra", "city": "Caballito", "rating": 3.9, "image": "/cafes/amelia.jpg" },
-        { "name": "Tiendas Naturales", "slug": "amelia", "city": "Caballito", "rating": 3.9, "image": "/cafes/amelia.jpg" },
-        { "name": "Amelia", "slug": "amelia", "city": "Caballito", "rating": 3.9, "image": "/cafes/amelia.jpg" }
+{
+        "search_metadata": {
+          "id": "68fab3115a5e96ebc961ef55",
+          "status": "Success",
+          "json_endpoint": "https://serpapi.com/searches/ef1d969403fec0fb/68fab3115a5e96ebc961ef55.json",
+          "pixel_position_endpoint": "https://serpapi.com/searches/ef1d969403fec0fb/68fab3115a5e96ebc961ef55.json_with_pixel_position",
+          "created_at": "2025-10-23 22:58:25 UTC",
+          "processed_at": "2025-10-23 22:58:25 UTC",
+          "google_url": "https://www.google.com.ar/search?q=cafe+de+especialidad&oq=cafe+de+especialidad&uule=w+CAIQICIWQnVlbm9zIEFpcmVzLEFyZ2VudGluYQ&hl=es&gl=ar&sourceid=chrome&ie=UTF-8",
+          "raw_html_file": "https://serpapi.com/searches/ef1d969403fec0fb/68fab3115a5e96ebc961ef55.html",
+          "total_time_taken": 3.38
+        },
+        "search_parameters": {
+          "engine": "google",
+          "q": "cafe de especialidad",
+          "location_requested": "Buenos Aires, Argentina",
+          "location_used": "Buenos Aires,Argentina",
+          "google_domain": "google.com.ar",
+          "hl": "es",
+          "gl": "ar",
+          "device": "desktop"
+        },
+        "search_information": {
+          "query_displayed": "cafe de especialidad",
+          "total_results": 17300000,
+          "time_taken_displayed": 0.63,
+          "organic_results_state": "Results for exact spelling",
+          "results_for": "Buenos Aires, Cdad. Autónoma de Buenos Aires"
+        },
+        "local_map": {
+          "link": "https://www.google.com.ar/search?sca_esv=5314ac5036c6a181&hl=es&gl=ar&tbm=lcl&q=cafe+de+especialidad&rflfq=1&num=10&uule=w+CAIQICIWQnVlbm9zIEFpcmVzLEFyZ2VudGluYQ&sa=X&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8QtgN6BAg2EAM",
+          "image": "https://serpapi.com/searches/68fab3115a5e96ebc961ef55/images/ec1cb390afc2daf18a7cae6a20980960.png",
+          "gps_coordinates": {
+            "latitude": -34.60340003,
+            "longitude": -58.39585304
+          }
+        },
+        "local_results": {
+          "places": [
+            {
+              "position": 1,
+              "rating": 4.9,
+              "reviews": 95,
+              "reviews_original": "(95)",
+              "price": "$ 4.000-6.000",
+              "lsig": "AB86z5XClpr5DyaZsxwIy8JxWkvl",
+              "thumbnail": "https://serpapi.com/searches/68fab3115a5e96ebc961ef55/images/93d8f38adc6ab07b752c6da2aca9cda1a0b557c204345aa57870a68863e57bd6cb7ccf8783750982.jpeg",
+              "service_options": {
+                "consumo_en_el_lugar": true,
+                "retiros_en_la_puerta": true,
+                "no_ofrece_servicio_de_entrega_a_domicilio": true
+              },
+              "place_id": "12379085834658126200",
+              "place_id_search": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es&location=Buenos+Aires%2C+Argentina&ludocid=12379085834658126200&q=cafe+de+especialidad",
+              "gps_coordinates": {
+                "latitude": -34.603832,
+                "longitude": -58.379837
+              },
+              "title": "Koofi | Café de especialidad",
+              "type": "Cafetería",
+              "address": "Av. Corrientes 924"
+            },
+            {
+              "position": 2,
+              "rating": 4.9,
+              "reviews": 146,
+              "reviews_original": "(146)",
+              "price": "$ 2.000-4.000",
+              "lsig": "AB86z5XRadfRL-jWDoHy-ouDdCIv",
+              "thumbnail": "https://serpapi.com/searches/68fab3115a5e96ebc961ef55/images/93d8f38adc6ab07b752c6da2aca9cda18abffb8afc89a454cb21db9445a3f155ea43909f08d4cb33.jpeg",
+              "service_options": {
+                "consumo_en_el_lugar": true,
+                "retiros_en_la_puerta": true,
+                "no_ofrece_servicio_de_entrega_a_domicilio": true
+              },
+              "place_id": "1423084294435138392",
+              "place_id_search": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es&location=Buenos+Aires%2C+Argentina&ludocid=1423084294435138392&q=cafe+de+especialidad",
+              "gps_coordinates": {
+                "latitude": -34.602097,
+                "longitude": -58.38373
+              },
+              "title": "Café Boheme - Café de Especialidad",
+              "type": "Cafetería",
+              "address": "Libertad 545",
+              "hours": "Cerrado ⋅ Abre a las 7 a. m. del vie"
+            },
+            {
+              "position": 3,
+              "rating": 5.0,
+              "reviews": 22,
+              "reviews_original": "(22)",
+              "price": "$ 5.000-10.000",
+              "lsig": "AB86z5W1y6yrt6yqbhGheAxa8V9J",
+              "thumbnail": "https://serpapi.com/searches/68fab3115a5e96ebc961ef55/images/93d8f38adc6ab07b752c6da2aca9cda1be6c6a1a778094a202d1b1c2e7d7f2dc918d93bc85893011.jpeg",
+              "service_options": {
+                "consumo_en_el_lugar": true,
+                "para_llevar": true
+              },
+              "place_id": "14061388581768545449",
+              "place_id_search": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es&location=Buenos+Aires%2C+Argentina&ludocid=14061388581768545449&q=cafe+de+especialidad",
+              "gps_coordinates": {
+                "latitude": -34.601124,
+                "longitude": -58.37582
+              },
+              "title": "Moka Hm Coffee - Café de especialidad",
+              "type": "Cafetería",
+              "address": "Tucumán 636",
+              "hours": "Cierra pronto: ⋅ 8 p. m."
+            }
+          ],
+          "more_locations_link": "https://www.google.com.ar/search?sca_esv=5314ac5036c6a181&hl=es&gl=ar&tbm=lcl&q=cafe+de+especialidad&rflfq=1&num=10&uule=w+CAIQICIWQnVlbm9zIEFpcmVzLEFyZ2VudGluYQ&sa=X&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8QjGp6BAg4EAE"
+        },
+        "knowledge_graph": {
+          "title": "Café de especialidad",
+          "entity_type": "food, kp3_verticals",
+          "kgmid": "/m/047bdsq",
+          "knowledge_graph_search_link": "https://www.google.com.ar/search?kgmid=/m/047bdsq&hl=es-AR&q=Caf%C3%A9+de+especialidad",
+          "serpapi_knowledge_graph_search_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es-AR&kgmid=%2Fm%2F047bdsq&location=Buenos+Aires%2C+Argentina&q=Caf%C3%A9+de+especialidad",
+          "header_images": [
+            {
+              "image": "https://serpapi.com/searches/68fab3115a5e96ebc961ef55/images/a0296956271a8539a14c170e49498c3f71ada87077a0ab7eea422b5dc59dd66e8a197a56c8e05181.webp",
+              "source": "https://blog.scoolinary.com/cafe-de-especialidad"
+            },
+            {
+              "image": "https://serpapi.com/searches/68fab3115a5e96ebc961ef55/images/a0296956271a8539a14c170e49498c3f71ada87077a0ab7eb265790a401368351a511fbfceaed425.webp",
+              "source": "https://flatnwhite.com/guia-cafe-de-especialidad-todo-lo-que-tenes-que-saber-para-comprar/"
+            },
+            {
+              "image": "https://serpapi.com/searches/68fab3115a5e96ebc961ef55/images/a0296956271a8539a14c170e49498c3f71ada87077a0ab7eefcf865aa8e0dd08138a93d17705858d.webp",
+              "source": "https://cafearomas.com/blogs/news/descubre-los-diez-beneficios-del-cafe-de-especialidad-en-cafe-aromas"
+            },
+            {
+              "image": "https://serpapi.com/searches/68fab3115a5e96ebc961ef55/images/a0296956271a8539a14c170e49498c3f71ada87077a0ab7ed4193a54eb133f7090b1243b897035aa.webp",
+              "source": "https://cafedelirante.com.ar/blog/cafe-de-especialidad-que-es/"
+            }
+          ],
+          "description": "Café gourmet es la denominación que recibe el café que ha sido seleccionado desde la semilla que da lugar a la planta la cual es ubicada en una zona con el microclima y la altitud adecuados para su correcto crecimiento, maduración, floración y crecimiento de sus frutos.",
+          "description_highlighted_words": [
       
-]
+          ],
+          "source": {
+            "name": " Wikipedia",
+            "link": "https://es.wikipedia.org/wiki/Caf%C3%A9_gourmet"
+          }
+        },
+        "inline_videos": [
+          {
+            "position": 1,
+            "title": "Cómo Elegir El Mejor Café De Especialidad + Novedades Del ...",
+            "link": "https://www.youtube.com/watch?v=HEICuyYlQjI",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5oYPcEr8YO_As0wpDMhmYZ4P0g0H0PqsSd3TbMnRWnqBbte5upwW2Dw&s",
+            "channel": "flat&white",
+            "duration": "8:15",
+            "platform": "YouTube",
+            "key_moments": [
+              {
+                "time": "00:00",
+                "title": "Introducción y novedades",
+                "link": "https://www.youtube.com/watch?v=HEICuyYlQjI&t=0"
+              },
+              {
+                "time": "01:30",
+                "title": "Presentación del proceso de selección de café",
+                "link": "https://www.youtube.com/watch?v=HEICuyYlQjI&t=90"
+              },
+              {
+                "time": "03:00",
+                "title": "Control de calidad del café",
+                "link": "https://www.youtube.com/watch?v=HEICuyYlQjI&t=180"
+              },
+              {
+                "time": "04:45",
+                "title": "Tueste de muestra con la tostadora Ikawa",
+                "link": "https://www.youtube.com/watch?v=HEICuyYlQjI&t=285"
+              },
+              {
+                "time": "06:30",
+                "title": "Mesa de catación (cupping)",
+                "link": "https://www.youtube.com/watch?v=HEICuyYlQjI&t=390"
+              },
+              {
+                "time": "08:00",
+                "title": "Conclusiones y agradecimientos",
+                "link": "https://www.youtube.com/watch?v=HEICuyYlQjI&t=480"
+              }
+            ]
+          },
+          {
+            "position": 2,
+            "title": "El CAFÉ DE ESPECIALIDAD explicado en 5 minutos FÁCIL",
+            "link": "https://www.youtube.com/watch?v=csccyb49zk4",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlxGq3nd-_oa6WVzBWmSbE8A65Ox3nNEA0B6RnYkHGNebZ030alvBGcg&s",
+            "channel": "Cafés MyWay",
+            "duration": "5:46",
+            "platform": "YouTube"
+          },
+          {
+            "position": 3,
+            "title": "Coffee Town on Instagram: \"Coffee Town, donde nació el café ...",
+            "link": "https://www.instagram.com/reel/C5-3y1cr9DW/",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4DfCm23mSynJzuR4xIOvFH681uLBTdfSH_B-152rOzF_-rS9DBhYDUw&s",
+            "channel": "coffeetownargentina",
+            "duration": "0:04",
+            "platform": "Instagram"
+          }
+        ],
+        "related_questions": [
+          {
+            "question": "¿Qué significa un café de especialidad?",
+            "type": "ai_overview",
+            "text_blocks": [
+              {
+                "type": "paragraph",
+                "snippet": "El café de especialidad es un café de alta calidad que obtiene una puntuación de 80 puntos o más sobre 100 en una evaluación sensorial realizada por catadores certificados, según la Specialty Coffee Association. Se diferencia del café comercial por su trazabilidad, ya que se conocen todos los eslabones de su cadena de producción (desde la finca, pasando por los productores, hasta el barista), y por sus notas de sabor complejas y distintivas, a menudo provenientes de granos de la variedad arábica cultivados en condiciones óptimas.",
+                "snippet_links": [
+                  {
+                    "text": "Specialty Coffee Association",
+                    "link": "https://translate.google.com/translate?u=https://sca.coffee/research/what-is-specialty-coffee&hl=es&sl=en&tl=es&client=sge"
+                  }
+                ],
+                "snippet_highlighted_words": [
+                  "es un café de alta calidad que obtiene una puntuación de 80 puntos o más sobre 100 en una evaluación sensorial realizada por catadores certificados"
+                ],
+                "reference_indexes": [
+                  2,
+                  3,
+                  5,
+                  6
+                ]
+              },
+              {
+                "type": "paragraph",
+                "snippet": "Características clave"
+              },
+              {
+                "type": "list",
+                "list": [
+                  {
+                    "title": "Evaluación sensorial:",
+                    "snippet": "Una puntuación de 80 puntos o más es un requisito para ser considerado café de especialidad, basada en atributos como el aroma, sabor, cuerpo y acidez, según el Specialty Coffee Association https://sca.coffee.en2es.search.translate. பொருள்கள்.org/research/what-is-specialty-coffee.",
+                    "reference_indexes": [
+                      2,
+                      5,
+                      6
+                    ]
+                  },
+                  {
+                    "title": "Trazabilidad:",
+                    "snippet": "Cada grano tiene una historia que se puede rastrear hasta la finca donde fue cultivado, incluyendo el productor, la altitud y el proceso de beneficio utilizado.",
+                    "reference_indexes": [
+                      1,
+                      2
+                    ]
+                  },
+                  {
+                    "title": "Calidad del grano:",
+                    "snippet": "Se utilizan granos de alta calidad, con un mínimo de defectos (entre 0 y 5 defectos cada 350 gramos de café molido).",
+                    "reference_indexes": [
+                      2,
+                      7
+                    ]
+                  },
+                  {
+                    "title": "Proceso de producción:",
+                    "snippet": "Desde la selección de la semilla hasta la cosecha, el procesamiento y el tueste, cada etapa se realiza con un cuidado meticuloso para resaltar las cualidades del café.",
+                    "reference_indexes": [
+                      0,
+                      2,
+                      4
+                    ]
+                  },
+                  {
+                    "title": "Notas de sabor complejas:",
+                    "snippet": "A diferencia del sabor genérico del café comercial, los cafés de especialidad presentan notas complejas y distintivas que pueden recordar a frutas, flores, especias o chocolate.",
+                    "reference_indexes": [
+                      2
+                    ]
+                  }
+                ]
+              }
+            ],
+            "references": [
+              {
+                "title": "¿Qué es el Café de Especialidad? | Cafés El Criollo",
+                "link": "https://cafeselcriollo.com/articulos/que-es-cafe-especialidad/",
+                "source": "Cafés el Criollo",
+                "index": 0
+              },
+              {
+                "title": "¿Tienes claro qué es un café de especialidad? - Cafés Myway",
+                "link": "https://cafesmyway.com/curiosidades/que-es-un-cafe-de-especialidad/#:~:text=se%20expresen%20plenamente.-,4.,supermercados%20como%20los%20caf%C3%A9s%20comerciales.",
+                "snippet": "7 feb 2025 — 4. ETIQUETADO: Total transparencia. Es algo que a mi también me llamó la atención al principio. La etiqueta de un café d...",
+                "source": "Cafés Myway",
+                "index": 1
+              },
+              {
+                "title": "Todo lo que tienes que saber sobre el café de especialidad",
+                "link": "https://www.baque.com/es/blog/todo-lo-que-tienes-que-saber-sobre-el-cafe-de-especialidad/#:~:text=%C2%BFQu%C3%A9%20es%20un%20caf%C3%A9%20de,%2C%20flores%2C%20especias%20y%20chocolate.",
+                "snippet": "30 oct 2024 — ¿Qué es un café de especialidad? El café de especialidad es mucho más que un café de calidad. Se define como aquel que ...",
+                "source": "Cafés Baqué",
+                "index": 2
+              },
+              {
+                "title": "Café de especialidad: la mejor elección - Bonka",
+                "link": "https://www.bonka.es/amor-por-el-cafe/cafe-de-especialidad#:~:text=Qu%C3%A9%20define%20a%20un%20caf%C3%A9,por%20la%20Specialty%20Coffee%20Association.",
+                "snippet": "Qué define a un café de especialidad Aunque no existe una definición globalmente aceptada de lo que significa, cuando se habla de ...",
+                "source": "Café Bonka",
+                "index": 3
+              },
+              {
+                "title": "Café de especialidad",
+                "link": "https://elpalaciodelcafe.com.uy/blog/cafe-de-especialidad-6#:~:text=2.%20Proceso%20de%20Cosecha%20y%20Beneficiado%20*,afectan%20directamente%20el%20sabor%20final%20del%20caf%C3%A9.",
+                "snippet": "17 may 2024 — 2. Proceso de Cosecha y Beneficiado * Cosecha Manual: A diferencia de la recolección mecánica, el café de especialidad...",
+                "source": "El palacio del café",
+                "index": 4
+              },
+              {
+                "title": "¿De qué hablamos cuando hablamos de café de especialidad?",
+                "link": "https://nomadcoffee.es/blogs/news/de-que-hablamos-cuando-hablamos-de-cafe-de-especialidad#:~:text=El%20caf%C3%A9%20de%20especialidad%20es,acidez%2C%20cuerpo%2C%20entre%20otros.",
+                "snippet": "El café de especialidad es una categoría que se otorga al café que sale de los rangos comúnmente establecidos. Esto hace que el pr...",
+                "source": "Nomad Coffee",
+                "index": 5
+              },
+              {
+                "title": "Descubrir el café de especialidad o specialty coffee - Malongo",
+                "link": "https://www.malongo.com/es/cafe-especialidad-specialty-coffee/#:~:text=La%20definici%C3%B3n%20de%20caf%C3%A9%20de,%2C%20importadores%2C%20tostadores%20y%20baristas.",
+                "snippet": "12 ene 2024 — La definición de café de especialidad El café de especialidad, o specialty coffee es un café de gama alta procedente de...",
+                "source": "Malongo",
+                "index": 6
+              },
+              {
+                "title": "Definiciones existentes de café especial",
+                "link": "https://ico.org/documents/cy2024-25/fgsc-3c-definitions-specialty-coffee.pdf",
+                "snippet": "11 nov 2024 — Un requisito mínimo para un café especial es el número de defectos: para ser considerado especial, un café debe tener d...",
+                "source": "International Coffee Organization |",
+                "index": 7
+              }
+            ],
+            "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSWNWTlBiQzFWWjJsWFNVUnZkVU0wWTJKRGExcDBVV3d4ZEdaME1WaG9XSE5ZTVZvemVYSTNhVEZ2V25ReWVHUnplV3hUTFU1NVVXVTViR1pYVmtsblFqSlNibXhYTVdKallXb3pjV3hTTFRKUVFtdHRMVUpPVFdnMFFSSVhSWEpRTm1GTWVtRk1UM0ZFTVdaSlVEWmZZV1V0VVRnYUlrRkdUVUZIUjNKTVVHcGZObmhtZFdGM2IwRlFlblpVYmt4eE0yNUZhRTlXU2tFIiwiZmN2IjoiMyIsImVpIjoiRXJQNmFMemFMT3FEMWZJUDZfYWUtUTgiLCJxYyI6IkNoUmpZV1psSUdSbElHVnpjR1ZqYVdGc2FXUmhaQkFPZlItRkt6LWlBUUpsY3ciLCJxdWVzdGlvbiI6IsK/UXXDqSBzaWduaWZpY2EgdW4gY2Fmw6kgZGUgZXNwZWNpYWxpZGFkPyIsImxrIjoiR2lkeGRjT3BJSE5wWjI1cFptbGpZU0IxYmlCallXYkRxU0JrWlNCbGMzQmxZMmxoYkdsa1lXUSIsImJzIjoiYy1PSzR0STZ0RC13OVBCS2hlTE05THpNdE16a1JJWFNQSVhreERTZ1VFcXFRbXB4UVdweVptSk9aa3BpaXIzRXExSWpUU24xUXVLVWN5Vnc2UjdhNzN4NGMyNi1RbkZpVW1vUlVJOUNhZzVVY1dveHB2SExtWTEwcExTU2lkYkI1Y1dsRExTaDlQRENIS0JrY1g2ZVFrNS1zWUtKUWtsbVFUNVlNVmlqdmNRbVBpTUZLYm5rMGtUY3lsSzVvcmkwb1NFQkVvZnJCbGtMZEFLR1cxZEVHbWxJcVJXV3BpSXJUOFd1V29BUkFBIiwiaWQiOiJmY19FclA2YUx6YUxPcUQxZklQNl9hZS1ROF8yIn0=",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSWNWTlBiQzFWWjJsWFNVUnZkVU0wWTJKRGExcDBVV3d4ZEdaME1WaG9XSE5ZTVZvemVYSTNhVEZ2V25ReWVHUnplV3hUTFU1NVVXVTViR1pYVmtsblFqSlNibXhYTVdKallXb3pjV3hTTFRKUVFtdHRMVUpPVFdnMFFSSVhSWEpRTm1GTWVtRk1UM0ZFTVdaSlVEWmZZV1V0VVRnYUlrRkdUVUZIUjNKTVVHcGZObmhtZFdGM2IwRlFlblpVYmt4eE0yNUZhRTlXU2tFIiwiZmN2IjoiMyIsImVpIjoiRXJQNmFMemFMT3FEMWZJUDZfYWUtUTgiLCJxYyI6IkNoUmpZV1psSUdSbElHVnpjR1ZqYVdGc2FXUmhaQkFPZlItRkt6LWlBUUpsY3ciLCJxdWVzdGlvbiI6IsK%2FUXXDqSBzaWduaWZpY2EgdW4gY2Fmw6kgZGUgZXNwZWNpYWxpZGFkPyIsImxrIjoiR2lkeGRjT3BJSE5wWjI1cFptbGpZU0IxYmlCallXYkRxU0JrWlNCbGMzQmxZMmxoYkdsa1lXUSIsImJzIjoiYy1PSzR0STZ0RC13OVBCS2hlTE05THpNdE16a1JJWFNQSVhreERTZ1VFcXFRbXB4UVdweVptSk9aa3BpaXIzRXExSWpUU24xUXVLVWN5Vnc2UjdhNzN4NGMyNi1RbkZpVW1vUlVJOUNhZzVVY1dveHB2SExtWTEwcExTU2lkYkI1Y1dsRExTaDlQRENIS0JrY1g2ZVFrNS1zWUtKUWtsbVFUNVlNVmlqdmNRbVBpTUZLYm5rMGtUY3lsSzVvcmkwb1NFQkVvZnJCbGtMZEFLR1cxZEVHbWxJcVJXV3BpSXJUOFd1V29BUkFBIiwiaWQiOiJmY19FclA2YUx6YUxPcUQxZklQNl9hZS1ROF8yIn0%3D"
+          },
+          {
+            "question": "¿Cómo saber si el café es de especialidad?",
+            "type": "featured_snippet",
+            "snippet": "Para que un café sea considerado “de especialidad”, debe ser evaluado por un catador certificado (Q Grader) siguiendo los estándares de la Specialty Coffee Association (SCA). Esta evaluación incluye aspectos como aroma, acidez, cuerpo, balance y ausencia de defectos.",
+            "title": "¿Qué es el Café de Especialidad? Guía Completa 2025",
+            "date": "21 abr 2025",
+            "link": "https://cafedelirante.com.ar/blog/cafe-de-especialidad-que-es/#:~:text=Para%20que%20un%20caf%C3%A9%20sea,balance%20y%20ausencia%20de%20defectos.",
+            "displayed_link": "https://cafedelirante.com.ar › Blog sobre Café",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn8Z5sHip2Jv9IUovUdp8EnONuD1A195giZYMfI0yYhA&s",
+            "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSWNWTlBiQzFWWjJsWFNVUnZkVU0wWTJKRGExcDBVV3d4ZEdaME1WaG9XSE5ZTVZvemVYSTNhVEZ2V25ReWVHUnplV3hUTFU1NVVXVTViR1pYVmtsblFqSlNibXhYTVdKallXb3pjV3hTTFRKUVFtdHRMVUpPVFdnMFFSSVhSWEpRTm1GTWVtRk1UM0ZFTVdaSlVEWmZZV1V0VVRnYUlrRkdUVUZIUjNKTVVHcGZObmhtZFdGM2IwRlFlblpVYmt4eE0yNUZhRTlXU2tFIiwiZmN2IjoiMyIsImVpIjoiRXJQNmFMemFMT3FEMWZJUDZfYWUtUTgiLCJxYyI6IkNoUmpZV1psSUdSbElHVnpjR1ZqYVdGc2FXUmhaQkFPZlItRkt6LWlBUUpsY3ciLCJxdWVzdGlvbiI6IsK/Q8OzbW8gc2FiZXIgc2kgZWwgY2Fmw6kgZXMgZGUgZXNwZWNpYWxpZGFkPyIsImxrIjoiR2lwanc3TnRieUJ6WVdKbGNpQnphU0JsYkNCallXYkRxU0JsY3lCa1pTQmxjM0JsWTJsaGJHbGtZV1EiLCJicyI6ImMtT0s0dEk2dEQtdzlQQktoZUxNOUx6TXRNemtSSVhTUElYa3hEU2dVRXFxUW1weFFXcHlabUpPWmtwaWlyM0VxMUlqVFNuMVF1S1VjeVZ3NlI3YTczeDRjMjYtUW5GaVVtb1JVSTlDYWc1VWNXb3hwdkhMbVkxMHBMU1NpZGJCNWNXbERMU2g5UERDSEtCa2NYNmVRazUtc1lLSlFrbG1RVDVZTVZpanZjUW1QaU1GS2JuazBrVGN5bEs1b3JpMG9TRUJFb2ZyQmxrTGRBS0dXMWRFR21sSXFSV1dwaUlyVDhXdVdvQVJBQSIsImlkIjoiZmNfRXJQNmFMemFMT3FEMWZJUDZfYWUtUThfMiJ9",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSWNWTlBiQzFWWjJsWFNVUnZkVU0wWTJKRGExcDBVV3d4ZEdaME1WaG9XSE5ZTVZvemVYSTNhVEZ2V25ReWVHUnplV3hUTFU1NVVXVTViR1pYVmtsblFqSlNibXhYTVdKallXb3pjV3hTTFRKUVFtdHRMVUpPVFdnMFFSSVhSWEpRTm1GTWVtRk1UM0ZFTVdaSlVEWmZZV1V0VVRnYUlrRkdUVUZIUjNKTVVHcGZObmhtZFdGM2IwRlFlblpVYmt4eE0yNUZhRTlXU2tFIiwiZmN2IjoiMyIsImVpIjoiRXJQNmFMemFMT3FEMWZJUDZfYWUtUTgiLCJxYyI6IkNoUmpZV1psSUdSbElHVnpjR1ZqYVdGc2FXUmhaQkFPZlItRkt6LWlBUUpsY3ciLCJxdWVzdGlvbiI6IsK%2FQ8OzbW8gc2FiZXIgc2kgZWwgY2Fmw6kgZXMgZGUgZXNwZWNpYWxpZGFkPyIsImxrIjoiR2lwanc3TnRieUJ6WVdKbGNpQnphU0JsYkNCallXYkRxU0JsY3lCa1pTQmxjM0JsWTJsaGJHbGtZV1EiLCJicyI6ImMtT0s0dEk2dEQtdzlQQktoZUxNOUx6TXRNemtSSVhTUElYa3hEU2dVRXFxUW1weFFXcHlabUpPWmtwaWlyM0VxMUlqVFNuMVF1S1VjeVZ3NlI3YTczeDRjMjYtUW5GaVVtb1JVSTlDYWc1VWNXb3hwdkhMbVkxMHBMU1NpZGJCNWNXbERMU2g5UERDSEtCa2NYNmVRazUtc1lLSlFrbG1RVDVZTVZpanZjUW1QaU1GS2JuazBrVGN5bEs1b3JpMG9TRUJFb2ZyQmxrTGRBS0dXMWRFR21sSXFSV1dwaUlyVDhXdVdvQVJBQSIsImlkIjoiZmNfRXJQNmFMemFMT3FEMWZJUDZfYWUtUThfMiJ9"
+          },
+          {
+            "question": "¿Cuáles son los 4 tipos de café?",
+            "type": "featured_snippet",
+            "title": "Cuatro formas de beber tu café andatti",
+            "link": "https://www.oxxo.com/blog/tipos-de-cafe-en-el-mundo",
+            "list": [
+              "Café cortado y macchiato. Conocido como café cortado, se trata del café espresso servido en taza o vaso pequeño con una cucharada de leche para suavizar el sabor amargo del café. ... ",
+              "Café solo. También conocido como café espresso. ... ",
+              "Café con leche. ... ",
+              "Cafés exóticos."
+            ],
+            "displayed_link": "https://www.oxxo.com › blog › tipos-de-cafe-en-el-mundo",
+            "source_logo": "https://serpapi.com/searches/68fab3115a5e96ebc961ef55/images/d1ae2d9ed76a22570bb4d3b1f3fb75b57716ae0a960f4a07219db3cc76e9c63c.png",
+            "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSWNWTlBiQzFWWjJsWFNVUnZkVU0wWTJKRGExcDBVV3d4ZEdaME1WaG9XSE5ZTVZvemVYSTNhVEZ2V25ReWVHUnplV3hUTFU1NVVXVTViR1pYVmtsblFqSlNibXhYTVdKallXb3pjV3hTTFRKUVFtdHRMVUpPVFdnMFFSSVhSWEpRTm1GTWVtRk1UM0ZFTVdaSlVEWmZZV1V0VVRnYUlrRkdUVUZIUjNKTVVHcGZObmhtZFdGM2IwRlFlblpVYmt4eE0yNUZhRTlXU2tFIiwiZmN2IjoiMyIsImVpIjoiRXJQNmFMemFMT3FEMWZJUDZfYWUtUTgiLCJxYyI6IkNoUmpZV1psSUdSbElHVnpjR1ZqYVdGc2FXUmhaQkFPZlItRkt6LWlBUUpsY3ciLCJxdWVzdGlvbiI6IsK/Q3XDoWxlcyBzb24gbG9zIDQgdGlwb3MgZGUgY2Fmw6k/IiwibGsiOiJHaDVqZFdGc1pYTWdjMjl1SUd4dmN5QTBJSFJwY0c5eklHUmxJR05oWm1VIiwiYnMiOiJjLU9LNHRJNnRELXc5UEJLaGVMTTlMek10TXprUklYU1BJWGt4RFNnVUVxcVFtcHhRV3B5Wm1KT1prcGlpcjNFcTFJalRTbjFRdUtVY3lWdzZSN2E3M3g0YzI2LVFuRmlVbW9SVUk5Q2FnNVVjV294cHZITG1ZMTBwTFNTaWRiQjVjV2xETFNoOVBEQ0hLQmtjWDZlUWs1LXNZS0pRa2xtUVQ1WU1WaWp2Y1FtUGlNRktibmswa1RjeWxLNW9yaTBvU0VCRW9mckJsa0xkQUtHVzFkRUdtbElxUldXcGlJclQ4V3VXb0FSQUEiLCJpZCI6ImZjX0VyUDZhTHphTE9xRDFmSVA2X2FlLVE4XzIifQ==",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSWNWTlBiQzFWWjJsWFNVUnZkVU0wWTJKRGExcDBVV3d4ZEdaME1WaG9XSE5ZTVZvemVYSTNhVEZ2V25ReWVHUnplV3hUTFU1NVVXVTViR1pYVmtsblFqSlNibXhYTVdKallXb3pjV3hTTFRKUVFtdHRMVUpPVFdnMFFSSVhSWEpRTm1GTWVtRk1UM0ZFTVdaSlVEWmZZV1V0VVRnYUlrRkdUVUZIUjNKTVVHcGZObmhtZFdGM2IwRlFlblpVYmt4eE0yNUZhRTlXU2tFIiwiZmN2IjoiMyIsImVpIjoiRXJQNmFMemFMT3FEMWZJUDZfYWUtUTgiLCJxYyI6IkNoUmpZV1psSUdSbElHVnpjR1ZqYVdGc2FXUmhaQkFPZlItRkt6LWlBUUpsY3ciLCJxdWVzdGlvbiI6IsK%2FQ3XDoWxlcyBzb24gbG9zIDQgdGlwb3MgZGUgY2Fmw6k%2FIiwibGsiOiJHaDVqZFdGc1pYTWdjMjl1SUd4dmN5QTBJSFJwY0c5eklHUmxJR05oWm1VIiwiYnMiOiJjLU9LNHRJNnRELXc5UEJLaGVMTTlMek10TXprUklYU1BJWGt4RFNnVUVxcVFtcHhRV3B5Wm1KT1prcGlpcjNFcTFJalRTbjFRdUtVY3lWdzZSN2E3M3g0YzI2LVFuRmlVbW9SVUk5Q2FnNVVjV294cHZITG1ZMTBwTFNTaWRiQjVjV2xETFNoOVBEQ0hLQmtjWDZlUWs1LXNZS0pRa2xtUVQ1WU1WaWp2Y1FtUGlNRktibmswa1RjeWxLNW9yaTBvU0VCRW9mckJsa0xkQUtHVzFkRUdtbElxUldXcGlJclQ4V3VXb0FSQUEiLCJpZCI6ImZjX0VyUDZhTHphTE9xRDFmSVA2X2FlLVE4XzIifQ%3D%3D"
+          },
+          {
+            "question": "¿Qué tipo de café es el de especialidad?",
+            "type": "featured_snippet",
+            "snippet": "El specialty coffee, café especial o el café de especialidad, es un tipo de café que se caracteriza por su proceso artesano. Es decir, desde su recogida, su tratado, almacenamiento, su tostado hasta su envasado y consumo final. Solo de esta forma se consigue un café de calidad o de gama alta.",
+            "title": "Guía sobre el café de especialidad o \"Specialty Coffee\" - conCAFÉ",
+            "date": "14 abr 2020",
+            "link": "https://concafe.es/guia-cafe-de-especialidad-specialty-coffee/#:~:text=El%20specialty%20coffee%2C%20caf%C3%A9%20especial,calidad%20o%20de%20gama%20alta.",
+            "displayed_link": "https://concafe.es › guia-cafe-de-especialidad-specialty-c...",
+            "source_logo": "https://serpapi.com/searches/68fab3115a5e96ebc961ef55/images/d1ae2d9ed76a22570bb4d3b1f3fb75b53fe8a838fc51fbc398423db165313daa.png",
+            "next_page_token": "eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSWNWTlBiQzFWWjJsWFNVUnZkVU0wWTJKRGExcDBVV3d4ZEdaME1WaG9XSE5ZTVZvemVYSTNhVEZ2V25ReWVHUnplV3hUTFU1NVVXVTViR1pYVmtsblFqSlNibXhYTVdKallXb3pjV3hTTFRKUVFtdHRMVUpPVFdnMFFSSVhSWEpRTm1GTWVtRk1UM0ZFTVdaSlVEWmZZV1V0VVRnYUlrRkdUVUZIUjNKTVVHcGZObmhtZFdGM2IwRlFlblpVYmt4eE0yNUZhRTlXU2tFIiwiZmN2IjoiMyIsImVpIjoiRXJQNmFMemFMT3FEMWZJUDZfYWUtUTgiLCJxYyI6IkNoUmpZV1psSUdSbElHVnpjR1ZqYVdGc2FXUmhaQkFPZlItRkt6LWlBUUpsY3ciLCJxdWVzdGlvbiI6IsK/UXXDqSB0aXBvIGRlIGNhZsOpIGVzIGVsIGRlIGVzcGVjaWFsaWRhZD8iLCJsayI6ImM1TlNLeXhOVlNqSkxNaFhTRWxWU0U1TVMxVklMVlpJelFIeFVvc0xVcE16RTNNeVV4SlRBQSIsImJzIjoiYy1PSzR0STZ0RC13OVBCS2hlTE05THpNdE16a1JJWFNQSVhreERTZ1VFcXFRbXB4UVdweVptSk9aa3BpaXIzRXExSWpUU24xUXVLVWN5Vnc2UjdhNzN4NGMyNi1RbkZpVW1vUlVJOUNhZzVVY1dveHB2SExtWTEwcExTU2lkYkI1Y1dsRExTaDlQRENIS0JrY1g2ZVFrNS1zWUtKUWtsbVFUNVlNVmlqdmNRbVBpTUZLYm5rMGtUY3lsSzVvcmkwb1NFQkVvZnJCbGtMZEFLR1cxZEVHbWxJcVJXV3BpSXJUOFd1V29BUkFBIiwiaWQiOiJmY19FclA2YUx6YUxPcUQxZklQNl9hZS1ROF8yIn0=",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google_related_questions&google_domain=google.com&next_page_token=eyJvbnMiOiIxMDA0MSIsImZjIjoiRXFFQkNtSkJUR3QwWDNaSWNWTlBiQzFWWjJsWFNVUnZkVU0wWTJKRGExcDBVV3d4ZEdaME1WaG9XSE5ZTVZvemVYSTNhVEZ2V25ReWVHUnplV3hUTFU1NVVXVTViR1pYVmtsblFqSlNibXhYTVdKallXb3pjV3hTTFRKUVFtdHRMVUpPVFdnMFFSSVhSWEpRTm1GTWVtRk1UM0ZFTVdaSlVEWmZZV1V0VVRnYUlrRkdUVUZIUjNKTVVHcGZObmhtZFdGM2IwRlFlblpVYmt4eE0yNUZhRTlXU2tFIiwiZmN2IjoiMyIsImVpIjoiRXJQNmFMemFMT3FEMWZJUDZfYWUtUTgiLCJxYyI6IkNoUmpZV1psSUdSbElHVnpjR1ZqYVdGc2FXUmhaQkFPZlItRkt6LWlBUUpsY3ciLCJxdWVzdGlvbiI6IsK%2FUXXDqSB0aXBvIGRlIGNhZsOpIGVzIGVsIGRlIGVzcGVjaWFsaWRhZD8iLCJsayI6ImM1TlNLeXhOVlNqSkxNaFhTRWxWU0U1TVMxVklMVlpJelFIeFVvc0xVcE16RTNNeVV4SlRBQSIsImJzIjoiYy1PSzR0STZ0RC13OVBCS2hlTE05THpNdE16a1JJWFNQSVhreERTZ1VFcXFRbXB4UVdweVptSk9aa3BpaXIzRXExSWpUU24xUXVLVWN5Vnc2UjdhNzN4NGMyNi1RbkZpVW1vUlVJOUNhZzVVY1dveHB2SExtWTEwcExTU2lkYkI1Y1dsRExTaDlQRENIS0JrY1g2ZVFrNS1zWUtKUWtsbVFUNVlNVmlqdmNRbVBpTUZLYm5rMGtUY3lsSzVvcmkwb1NFQkVvZnJCbGtMZEFLR1cxZEVHbWxJcVJXV3BpSXJUOFd1V29BUkFBIiwiaWQiOiJmY19FclA2YUx6YUxPcUQxZklQNl9hZS1ROF8yIn0%3D"
+          }
+        ],
+        "organic_results": [
+          {
+            "position": 1,
+            "title": "Comprar Café de Especialidad Online en Argentina",
+            "link": "https://www.modobarista.com/cafe-y-te/?srsltid=AfmBOorWaDqYVcIn46jMA_ogqevLVCT8cRaaaxALFSJrQZ-4eKZ_D0yJ",
+            "redirect_link": "https://www.google.com.ar/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.modobarista.com/cafe-y-te/%3Fsrsltid%3DAfmBOorWaDqYVcIn46jMA_ogqevLVCT8cRaaaxALFSJrQZ-4eKZ_D0yJ&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8QFnoECBsQAQ",
+            "displayed_link": "https://www.modobarista.com › Café y Té",
+            "favicon": "https://serpapi.com/searches/68fab3115a5e96ebc961ef55/images/58634103ce0be58bab67a815a2966a36aee97d8831225467cf8c8aa1862af1b0.png",
+            "snippet": "Descubrí nuestra selección de cafés de especialidad de los mejores orígenes. Sabores únicos y procesos de tostado perfectos. ¡Envío a todo el país!",
+            "snippet_highlighted_words": [
+              "Descubrí nuestra selección de cafés de especialidad"
+            ],
+            "rich_snippet": {
+              "bottom": {
+                "extensions": [
+                  "4,7 calificación de la tienda (34)",
+                  "Entrega sin coste adicional"
+                ]
+              }
+            },
+            "source": "Modo Barista"
+          },
+          {
+            "position": 2,
+            "title": "Café de especialidad",
+            "link": "https://caffettino.com.ar/collections/cafe-de-especialidad?srsltid=AfmBOooVEpnr-8er9BL6nuNU9gcGZTAUlcA43Qgvfq58KtqET02DhOMd",
+            "redirect_link": "https://www.google.com.ar/url?sa=t&source=web&rct=j&opi=89978449&url=https://caffettino.com.ar/collections/cafe-de-especialidad%3Fsrsltid%3DAfmBOooVEpnr-8er9BL6nuNU9gcGZTAUlcA43Qgvfq58KtqET02DhOMd&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8QFnoECEUQAQ",
+            "displayed_link": "https://caffettino.com.ar › collections › cafe-de-especiali...",
+            "thumbnail": "https://serpapi.com/searches/68fab3115a5e96ebc961ef55/images/58634103ce0be58bab67a815a2966a36417e9dc140681e87f995c943fda2bd97.jpeg",
+            "favicon": "https://serpapi.com/searches/68fab3115a5e96ebc961ef55/images/58634103ce0be58bab67a815a2966a36087e08d1f7407b9890d342a0c6cc7eec.png",
+            "snippet": "Café de especialidad 100% arábica de origen Colombia, Brasil, Perú y más. Café en grano y molido, sin azúcar y sin agregados, tostado natural.",
+            "snippet_highlighted_words": [
+              "Café de especialidad 100% arábica de origen Colombia, Brasil, Perú y más"
+            ],
+            "sitelinks": {
+              "inline": [
+                {
+                  "title": "Brasil Intenso",
+                  "link": "https://caffettino.com.ar/products/cafe-en-grano-brasil-intenso"
+                },
+                {
+                  "title": "Café de especialidad Brasil...",
+                  "link": "https://caffettino.com.ar/products/cafe-de-especialidad-brasil-minas-gerais"
+                },
+                {
+                  "title": "Café de especialidad Perú...",
+                  "link": "https://caffettino.com.ar/products/cafe-de-especialidad-peru-huasimal"
+                }
+              ]
+            },
+            "rich_snippet": {
+              "bottom": {
+              }
+            },
+            "source": "Caffettino Store"
+          },
+          {
+            "position": 3,
+            "title": "Las mejores cafeterías de especialidad de Buenos Aires",
+            "link": "https://www.timeout.com/es/buenos-aires/mejores-cafeterias-de-especialidad",
+            "redirect_link": "https://www.google.com.ar/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.timeout.com/es/buenos-aires/mejores-cafeterias-de-especialidad&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8QFnoECEMQAQ",
+            "displayed_link": "https://www.timeout.com › buenos-aires › mejores-cafet...",
+            "thumbnail": "https://serpapi.com/searches/68fab3115a5e96ebc961ef55/images/58634103ce0be58bab67a815a2966a362d5d2bcbb1f962ac0ce18e7823eb0291.jpeg",
+            "favicon": "https://serpapi.com/searches/68fab3115a5e96ebc961ef55/images/58634103ce0be58bab67a815a2966a36e0eee0465ec45236db0056fbb1a6dbe2.png",
+            "date": "22 sept 2025",
+            "snippet": "Algunos de los mejores cafés de especialidad en Buenos Aires para dejarte llevar por una experiencia única en cada taza.",
+            "snippet_highlighted_words": [
+              "Algunos de los mejores cafés de especialidad en Buenos Aires"
+            ],
+            "source": "Time Out"
+          },
+          {
+            "position": 4,
+            "title": "Café de Especialidad - Drupa",
+            "link": "https://www.drupa.com.ar/cafe/",
+            "redirect_link": "https://www.google.com.ar/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.drupa.com.ar/cafe/&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8QFnoECEEQAQ",
+            "displayed_link": "https://www.drupa.com.ar › CAFÉ",
+            "thumbnail": "https://serpapi.com/searches/68fab3115a5e96ebc961ef55/images/58634103ce0be58bab67a815a2966a3665f1ad4e6531cf1ccd284b54c616232b.jpeg",
+            "favicon": "https://serpapi.com/searches/68fab3115a5e96ebc961ef55/images/58634103ce0be58bab67a815a2966a36a43845295a06c005723c7ad43d3a34a0.png",
+            "snippet": "Comprá online productos de CAFÉ desde $2.250,00. Tenemos cafÉ colombia - inzÁ tostado x 250 grs, cafÉ colombia - palmera - x 250 grs y más.",
+            "snippet_highlighted_words": [
+              "Comprá online productos de CAFÉ desde $2.250,00"
+            ],
+            "source": "drupa.com.ar"
+          },
+          {
+            "position": 5,
+            "title": "John & Joe | Tostadores de Café de Especialidad",
+            "link": "https://johnandjoe.com.ar/?srsltid=AfmBOooZj93iXBKKrn-x2Lp29r4oiKIaocsdNrbHZMHsUzOB58yUvpru",
+            "redirect_link": "https://www.google.com.ar/url?sa=t&source=web&rct=j&opi=89978449&url=https://johnandjoe.com.ar/%3Fsrsltid%3DAfmBOooZj93iXBKKrn-x2Lp29r4oiKIaocsdNrbHZMHsUzOB58yUvpru&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8QFnoECEAQAQ",
+            "displayed_link": "https://johnandjoe.com.ar",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN1o0R4Q8xh9KpcFsIceOZkXJIPOCd9YhrCuYDPzWtye4PIBGxw_jX&usqp=CAE&s",
+            "favicon": "https://serpapi.com/searches/68fab3115a5e96ebc961ef55/images/58634103ce0be58bab67a815a2966a36dd07ed3958d9c2cc1262b3c13fe7a458.png",
+            "snippet": "Nos mueve la pasión por el Café de Especialidad. Seleccionamos granos de origen excepcional, los tostamos con precisión y los envasamos con el máximo cuidado ...",
+            "snippet_highlighted_words": [
+              "Seleccionamos granos de origen excepcional"
+            ],
+            "source": "John & Joe | Tostadores de Café de Especialidad"
+          },
+          {
+            "position": 6,
+            "title": "Bicho Café de Especialidad (@bichocafe)",
+            "link": "https://www.instagram.com/bichocafe/?hl=es",
+            "redirect_link": "https://www.google.com.ar/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.instagram.com/bichocafe/%3Fhl%3Des&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8QFnoECEIQAQ",
+            "displayed_link": "Más de 13,3 k seguidores",
+            "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk6fQD2W4VCtJynfAVJbE6Vjb7yscYyk6B5UZjtYTWA5x5xzYiu4mD&usqp=CAE&s",
+            "favicon": "https://serpapi.com/searches/68fab3115a5e96ebc961ef55/images/58634103ce0be58bab67a815a2966a3613d05c4e403467e8711771318a344aba.png",
+            "snippet": "Café de especialidad Olleros 1637, Palermo Aguero 2039, Recoleta ☕️ Todos los días de 8.30 a 20.30. Opciones veganas y sin tacc. Mirá nuestra carta .",
+            "snippet_highlighted_words": [
+              "Olleros 1637, Palermo Aguero 2039, Recoleta"
+            ],
+            "source": "Instagram · bichocafe"
+          },
+          {
+            "position": 7,
+            "title": "Cafe Especialidad | MercadoLibre",
+            "link": "https://listado.mercadolibre.com.ar/cafe-especialidad",
+            "redirect_link": "https://www.google.com.ar/url?sa=t&source=web&rct=j&opi=89978449&url=https://listado.mercadolibre.com.ar/cafe-especialidad&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8QFnoECD8QAQ",
+            "displayed_link": "https://listado.mercadolibre.com.ar › cafe-especialidad",
+            "favicon": "https://serpapi.com/searches/68fab3115a5e96ebc961ef55/images/58634103ce0be58bab67a815a2966a36acb8c4a42e794bf5942a170e08b1eab4.png",
+            "snippet": "Con granos seleccionados de las mejores regiones productoras, un tostado artesanal que resalta sus sabores y aromas, y una variedad de tipos como Arábica, ...",
+            "snippet_highlighted_words": [
+              "Con granos seleccionados de las mejores regiones productoras"
+            ],
+            "rich_snippet": {
+              "bottom": {
+                "extensions": [
+                  "4,6 calificación de la tienda (15 k)"
+                ]
+              }
+            },
+            "source": "Mercado Libre"
+          },
+          {
+            "position": 8,
+            "title": "¿Qué es el Café de Especialidad? Guía Completa 2025",
+            "link": "https://cafedelirante.com.ar/blog/cafe-de-especialidad-que-es/?srsltid=AfmBOoq5whurL-bPqbNa-TRC3qb21LVaZ_5GmuTNai4SkfTWbi3IiL_D",
+            "redirect_link": "https://www.google.com.ar/url?sa=t&source=web&rct=j&opi=89978449&url=https://cafedelirante.com.ar/blog/cafe-de-especialidad-que-es/%3Fsrsltid%3DAfmBOoq5whurL-bPqbNa-TRC3qb21LVaZ_5GmuTNai4SkfTWbi3IiL_D&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8QFnoECD4QAQ",
+            "displayed_link": "https://cafedelirante.com.ar › Blog sobre Café",
+            "favicon": "https://serpapi.com/searches/68fab3115a5e96ebc961ef55/images/58634103ce0be58bab67a815a2966a36f133681b3ac7f9c03b6c3a38c964c414.png",
+            "date": "15 nov 2024",
+            "snippet": "Un café de especialidad está pensado para que lo disfrutes. No es ese café amargo que necesitás endulzar para que sea pasable. Es un café con ...",
+            "snippet_highlighted_words": [
+              "Un café de especialidad está pensado para que lo disfrutes"
+            ],
+            "sitelinks": {
+              "inline": [
+                {
+                  "title": "¿Cómo se Produce un Café de...",
+                  "link": "https://cafedelirante.com.ar/blog/cafe-de-especialidad-que-es/#%C2%BFComo_se_Produce_un_Cafe_de_Especialidad_Paso_a_Paso"
+                },
+                {
+                  "title": "Beneficios de Elegir Café de...",
+                  "link": "https://cafedelirante.com.ar/blog/cafe-de-especialidad-que-es/#Beneficios_de_Elegir_Cafe_de_Especialidad"
+                }
+              ]
+            },
+            "source": "Cafe Delirante"
+          },
+          {
+            "position": 9,
+            "title": "DOC Cafe",
+            "link": "https://doccafe.com.ar/es/",
+            "redirect_link": "https://www.google.com.ar/url?sa=t&source=web&rct=j&opi=89978449&url=https://doccafe.com.ar/es/&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8QFnoECD0QAQ",
+            "displayed_link": "https://doccafe.com.ar › ...",
+            "favicon": "https://serpapi.com/searches/68fab3115a5e96ebc961ef55/images/58634103ce0be58bab67a815a2966a36806741d8a949ef8871a47b41bb07affb.png",
+            "snippet": "El arte, el café, la amistad, la comida rica… Nos gusta la buena vida y compartirla con vos. DOC Café - café de especialidad. MENÚ. ¡Bienvenidx!",
+            "snippet_highlighted_words": [
+              "DOC Café - café de especialidad"
+            ],
+            "source": "doccafe.com.ar"
+          }
+        ],
+        "related_searches": [
+          {
+            "block_position": 1,
+            "query": "cafe de especialidad cerca de buenos aires, cdad. autónoma de buenos aires",
+            "link": "https://www.google.com.ar/search?sca_esv=5314ac5036c6a181&hl=es&gl=ar&q=cafe+de+especialidad+cerca+de+buenos+aires,+cdad.+aut%C3%B3noma+de+buenos+aires&sa=X&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8Q1QJ6BAhlEAE",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es&location=Buenos+Aires%2C+Argentina&q=cafe+de+especialidad+cerca+de+buenos+aires%2C+cdad.+aut%C3%B3noma+de+buenos+aires"
+          },
+          {
+            "block_position": 1,
+            "query": "Café de especialidad caba",
+            "link": "https://www.google.com.ar/search?sca_esv=5314ac5036c6a181&hl=es&gl=ar&q=Caf%C3%A9+de+especialidad+caba&sa=X&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8Q1QJ6BAhsEAE",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es&location=Buenos+Aires%2C+Argentina&q=Caf%C3%A9+de+especialidad+caba"
+          },
+          {
+            "block_position": 1,
+            "query": "Café de especialidad Belgrano",
+            "link": "https://www.google.com.ar/search?sca_esv=5314ac5036c6a181&hl=es&gl=ar&q=Caf%C3%A9+de+especialidad+Belgrano&sa=X&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8Q1QJ6BAhrEAE",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es&location=Buenos+Aires%2C+Argentina&q=Caf%C3%A9+de+especialidad+Belgrano"
+          },
+          {
+            "block_position": 1,
+            "query": "Café de especialidad Palermo",
+            "link": "https://www.google.com.ar/search?sca_esv=5314ac5036c6a181&hl=es&gl=ar&q=Caf%C3%A9+de+especialidad+Palermo&sa=X&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8Q1QJ6BAhqEAE",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es&location=Buenos+Aires%2C+Argentina&q=Caf%C3%A9+de+especialidad+Palermo"
+          },
+          {
+            "block_position": 1,
+            "query": "Café de especialidad cerca de mi",
+            "link": "https://www.google.com.ar/search?sca_esv=5314ac5036c6a181&hl=es&gl=ar&q=Caf%C3%A9+de+especialidad+cerca+de+mi&sa=X&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8Q1QJ6BAhpEAE",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es&location=Buenos+Aires%2C+Argentina&q=Caf%C3%A9+de+especialidad+cerca+de+mi"
+          },
+          {
+            "block_position": 1,
+            "query": "Café de especialidad Recoleta",
+            "link": "https://www.google.com.ar/search?sca_esv=5314ac5036c6a181&hl=es&gl=ar&q=Caf%C3%A9+de+especialidad+Recoleta&sa=X&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8Q1QJ6BAhnEAE",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es&location=Buenos+Aires%2C+Argentina&q=Caf%C3%A9+de+especialidad+Recoleta"
+          },
+          {
+            "block_position": 1,
+            "query": "Café de especialidad tipos",
+            "link": "https://www.google.com.ar/search?sca_esv=5314ac5036c6a181&hl=es&gl=ar&q=Caf%C3%A9+de+especialidad+tipos&sa=X&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8Q1QJ6BAhoEAE",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es&location=Buenos+Aires%2C+Argentina&q=Caf%C3%A9+de+especialidad+tipos"
+          },
+          {
+            "block_position": 1,
+            "query": "Café de especialidad granos",
+            "link": "https://www.google.com.ar/search?sca_esv=5314ac5036c6a181&hl=es&gl=ar&q=Caf%C3%A9+de+especialidad+granos&sa=X&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8Q1QJ6BAhmEAE",
+            "serpapi_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es&location=Buenos+Aires%2C+Argentina&q=Caf%C3%A9+de+especialidad+granos"
+          }
+        ],
+        "pagination": {
+          "current": 1,
+          "next": "https://www.google.com.ar/search?q=cafe+de+especialidad&sca_esv=5314ac5036c6a181&hl=es&gl=ar&ei=ErP6aLzaLOqD1fIP6_ae-Q8&start=10&sa=N&sstk=Af77f_fVnyJNxf8vZRry_we42v_a2S84E2TKPCFEVrmLsOdTz2_-fvGmuap-mqaRIOvSPJNymnZCeD1W7QV6vS8PjUKb-XLXAO4wVg&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8Q8NMDegQICBAW",
+          "other_pages": {
+            "2": "https://www.google.com.ar/search?q=cafe+de+especialidad&sca_esv=5314ac5036c6a181&hl=es&gl=ar&ei=ErP6aLzaLOqD1fIP6_ae-Q8&start=10&sa=N&sstk=Af77f_fVnyJNxf8vZRry_we42v_a2S84E2TKPCFEVrmLsOdTz2_-fvGmuap-mqaRIOvSPJNymnZCeD1W7QV6vS8PjUKb-XLXAO4wVg&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8Q8tMDegQICBAE",
+            "3": "https://www.google.com.ar/search?q=cafe+de+especialidad&sca_esv=5314ac5036c6a181&hl=es&gl=ar&ei=ErP6aLzaLOqD1fIP6_ae-Q8&start=20&sa=N&sstk=Af77f_fVnyJNxf8vZRry_we42v_a2S84E2TKPCFEVrmLsOdTz2_-fvGmuap-mqaRIOvSPJNymnZCeD1W7QV6vS8PjUKb-XLXAO4wVg&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8Q8tMDegQICBAG",
+            "4": "https://www.google.com.ar/search?q=cafe+de+especialidad&sca_esv=5314ac5036c6a181&hl=es&gl=ar&ei=ErP6aLzaLOqD1fIP6_ae-Q8&start=30&sa=N&sstk=Af77f_fVnyJNxf8vZRry_we42v_a2S84E2TKPCFEVrmLsOdTz2_-fvGmuap-mqaRIOvSPJNymnZCeD1W7QV6vS8PjUKb-XLXAO4wVg&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8Q8tMDegQICBAI",
+            "5": "https://www.google.com.ar/search?q=cafe+de+especialidad&sca_esv=5314ac5036c6a181&hl=es&gl=ar&ei=ErP6aLzaLOqD1fIP6_ae-Q8&start=40&sa=N&sstk=Af77f_fVnyJNxf8vZRry_we42v_a2S84E2TKPCFEVrmLsOdTz2_-fvGmuap-mqaRIOvSPJNymnZCeD1W7QV6vS8PjUKb-XLXAO4wVg&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8Q8tMDegQICBAK",
+            "6": "https://www.google.com.ar/search?q=cafe+de+especialidad&sca_esv=5314ac5036c6a181&hl=es&gl=ar&ei=ErP6aLzaLOqD1fIP6_ae-Q8&start=50&sa=N&sstk=Af77f_fVnyJNxf8vZRry_we42v_a2S84E2TKPCFEVrmLsOdTz2_-fvGmuap-mqaRIOvSPJNymnZCeD1W7QV6vS8PjUKb-XLXAO4wVg&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8Q8tMDegQICBAM",
+            "7": "https://www.google.com.ar/search?q=cafe+de+especialidad&sca_esv=5314ac5036c6a181&hl=es&gl=ar&ei=ErP6aLzaLOqD1fIP6_ae-Q8&start=60&sa=N&sstk=Af77f_fVnyJNxf8vZRry_we42v_a2S84E2TKPCFEVrmLsOdTz2_-fvGmuap-mqaRIOvSPJNymnZCeD1W7QV6vS8PjUKb-XLXAO4wVg&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8Q8tMDegQICBAO",
+            "8": "https://www.google.com.ar/search?q=cafe+de+especialidad&sca_esv=5314ac5036c6a181&hl=es&gl=ar&ei=ErP6aLzaLOqD1fIP6_ae-Q8&start=70&sa=N&sstk=Af77f_fVnyJNxf8vZRry_we42v_a2S84E2TKPCFEVrmLsOdTz2_-fvGmuap-mqaRIOvSPJNymnZCeD1W7QV6vS8PjUKb-XLXAO4wVg&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8Q8tMDegQICBAQ",
+            "9": "https://www.google.com.ar/search?q=cafe+de+especialidad&sca_esv=5314ac5036c6a181&hl=es&gl=ar&ei=ErP6aLzaLOqD1fIP6_ae-Q8&start=80&sa=N&sstk=Af77f_fVnyJNxf8vZRry_we42v_a2S84E2TKPCFEVrmLsOdTz2_-fvGmuap-mqaRIOvSPJNymnZCeD1W7QV6vS8PjUKb-XLXAO4wVg&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8Q8tMDegQICBAS",
+            "10": "https://www.google.com.ar/search?q=cafe+de+especialidad&sca_esv=5314ac5036c6a181&hl=es&gl=ar&ei=ErP6aLzaLOqD1fIP6_ae-Q8&start=90&sa=N&sstk=Af77f_fVnyJNxf8vZRry_we42v_a2S84E2TKPCFEVrmLsOdTz2_-fvGmuap-mqaRIOvSPJNymnZCeD1W7QV6vS8PjUKb-XLXAO4wVg&ved=2ahUKEwi8q8L3tbuQAxXqQVUIHWu7J_8Q8tMDegQICBAU"
+          }
+        },
+        "serpapi_pagination": {
+          "current": 1,
+          "next_link": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es&location=Buenos+Aires%2C+Argentina&q=cafe+de+especialidad&start=10",
+          "next": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es&location=Buenos+Aires%2C+Argentina&q=cafe+de+especialidad&start=10",
+          "other_pages": {
+            "2": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es&location=Buenos+Aires%2C+Argentina&q=cafe+de+especialidad&start=10",
+            "3": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es&location=Buenos+Aires%2C+Argentina&q=cafe+de+especialidad&start=20",
+            "4": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es&location=Buenos+Aires%2C+Argentina&q=cafe+de+especialidad&start=30",
+            "5": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es&location=Buenos+Aires%2C+Argentina&q=cafe+de+especialidad&start=40",
+            "6": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es&location=Buenos+Aires%2C+Argentina&q=cafe+de+especialidad&start=50",
+            "7": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es&location=Buenos+Aires%2C+Argentina&q=cafe+de+especialidad&start=60",
+            "8": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es&location=Buenos+Aires%2C+Argentina&q=cafe+de+especialidad&start=70",
+            "9": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es&location=Buenos+Aires%2C+Argentina&q=cafe+de+especialidad&start=80",
+            "10": "https://serpapi.com/search.json?device=desktop&engine=google&gl=ar&google_domain=google.com.ar&hl=es&location=Buenos+Aires%2C+Argentina&q=cafe+de+especialidad&start=90"
+          }
+        }
+      }
