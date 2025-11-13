@@ -1,18 +1,20 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
-import cafes from '../../data/cafes.json';
+import raw from '../../data/cafes.json';
+import { toCafesFromSerpRaw } from '../../lib/normalize';
 
-// Genera todas las rutas dinámicas en build
+const base = (raw as any).default ?? (raw as any);
+const items = toCafesFromSerpRaw(base);
+
 export async function getStaticPaths() {
-  const items = Array.isArray(cafes) ? cafes : [];
   return items.map((c) => ({
     params: { slug: c.slug },
     props: { cafe: c },
   }));
 }
 
-const { cafe } = Astro.props as { cafe: any };
+const { cafe } = Astro.props as { cafe: import('../../lib/normalize').Cafe };
 const { slug } = Astro.params;
 ---
 
@@ -35,7 +37,7 @@ const { slug } = Astro.params;
         <h1 class="mt-6 text-3xl font-semibold">{cafe.name}</h1>
         <p class="text-zinc-400">{cafe.city}</p>
         <div class="mt-2 inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-black/70 px-3 py-1 text-sm">
-          <span>★ {Number(cafe.rating ?? 0).toFixed(1)}</span>
+          <span>★ {typeof cafe.rating === 'number' ? cafe.rating.toFixed(1) : '-'}</span>
         </div>
 
         <div class="mt-8 grid gap-6 md:grid-cols-3">
@@ -46,8 +48,8 @@ const { slug } = Astro.params;
           <aside class="space-y-4">
             <h3 class="text-lg font-semibold">Información</h3>
             <ul class="text-zinc-300 text-sm space-y-1">
-              <li><strong>Ciudad:</strong> {cafe.city}</li>
-              <li><strong>Rating:</strong> {Number(cafe.rating ?? 0).toFixed(1)}</li>
+              {cafe.city && <li><strong>Ciudad:</strong> {cafe.city}</li>}
+              {typeof cafe.rating === 'number' && <li><strong>Rating:</strong> {cafe.rating.toFixed(1)}</li>}
               <li><strong>Slug:</strong> {slug}</li>
             </ul>
           </aside>
@@ -61,3 +63,4 @@ const { slug } = Astro.params;
     )}
   </div>
 </Layout>
+

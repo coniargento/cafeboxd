@@ -1,0 +1,109 @@
+---
+import '../styles/global.css';
+import '../styles/fonts.css';
+
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+
+// Fallback local por si la API falla (lee tu dump de SerpApi)
+import raw from '../data/cafes.json';
+import { toCafesFromSerpRaw } from '../lib/normalize';
+const fallbackBase = (raw as any)?.default ?? (raw as any);
+const fallbackList = toCafesFromSerpRaw(fallbackBase);
+---
+
+<Layout>
+  <SiteHeader activePage="/explorar" />
+
+  <section class="mx-auto max-w-6xl px-4 py-10">
+    <h1 class="text-3xl font-semibold mb-6">Explorar cafeterías</h1>
+
+    <!-- Filtros -->
+    <div class="mb-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <input
+        id="q"
+        type="text"
+        placeholder="Buscar (ej: mode, flat white, san telmo)"
+        class="col-span-2 rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-2 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-zinc-400"
+      />
+      <select id="loc" class="rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-2 text-zinc-100">
+        <option value="Buenos Aires, Argentina">Buenos Aires</option>
+        <option value="Córdoba, Argentina">Córdoba</option>
+        <option value="Rosario, Argentina">Rosario</option>
+      </select>
+    </div>
+
+    <div id="status" class="text-sm text-zinc-400 mb-4"></div>
+
+    <!-- Grilla -->
+    <div id="grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+  </section>
+
+  <script type="module">
+    // Fallback embebido desde el server (para que nunca se rompa la página)
+    const FALLBACK = JSON.parse(`<!--${JSON.stringify(fallbackList)}-->`.replace(/<!--|-->/g, ''));
+
+    const grid = document.getElementById('grid');
+    const status = document.getElementById('status');
+    const q = document.getElementById('q');
+    const loc = document.getElementById('loc');
+
+    function render(list) {
+      if (!grid) return;
+      if (!list.length) {
+        grid.innerHTML = '';
+        status.textContent = 'Sin resultados';
+        return;
+      }
+      status.textContent = `Encontrados: ${list.length}`;
+      grid.innerHTML = list.map(c => `
+        <a href="/cafe/${c.slug}" class="group block relative rounded-lg overflow-hidden border border-zinc-800 bg-zinc-950 hover:border-zinc-600 transition-all">
+          <div class="aspect-[4/3] bg-cover bg-center" style="background-image:url('${c.image || '/cafes/fallback.jpg'}')"></div>
+          <div class="p-3">
+            <h3 class="text-lg font-semibold text-white">${c.name}</h3>
+            <div class="flex items-center gap-2 text-sm text-zinc-300">
+              ${c.city ? `<span>${c.city}</span>` : ''}
+              ${typeof c.rating === 'number' ? `<span>· ★ ${c.rating.toFixed(1)}</span>` : ''}
+            </div>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    function debounce(fn, delay=350) {
+      let t; return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), delay); };
+    }
+
+    async function fetchCafes() {
+      const query = encodeURIComponent(q.value.trim());
+      const city = encodeURIComponent(loc.value);
+      const url = `/api/cafes?q=${query || 'cafe%20de%20especialidad'}&location=${city}&limit=24`;
+
+      status.textContent = 'Buscando cafés...';
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('API no disponible');
+        const data = await res.json();
+        const items = Array.isArray(data?.items) ? data.items : [];
+        if (items.length) {
+          render(items);
+        } else {
+          // si la API no devolvió nada, uso fallback local
+          render(FALLBACK);
+          status.textContent = 'Mostrando sugerencias';
+        }
+      } catch (e) {
+        console.error(e);
+        render(FALLBACK);
+        status.textContent = 'Sin conexión a la API — mostrando sugerencias';
+      }
+    }
+
+    // Eventos
+    q.addEventListener('input', debounce(fetchCafes, 350));
+    loc.addEventListener('change', fetchCafes);
+
+    // Primera carga
+    fetchCafes();
+  </script>
+</Layout>
