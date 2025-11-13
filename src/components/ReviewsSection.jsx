@@ -108,15 +108,11 @@ export default function ReviewsSection() {
                 <div className="flex items-center space-x-3">
                   {/* Avatar del usuario con foto simulada */}
                   <div className="w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center text-white font-semibold text-sm relative overflow-hidden">
-                    <img 
-                      src={`https://ui-avatars.com/api/?name=${encodeURIComponent(review.author)}&background=f59e0b&color=ffffff&size=48&bold=true`}
-                      alt={review.author}
-                      className="w-full h-full rounded-full object-cover"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.nextSibling.style.display = 'flex';
-                      }}
-                    />
+                  <img 
+                    src={review.avatar}
+                    alt={review.author}
+                    className="w-full h-full rounded-full object-cover"
+                  />
                     <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center text-white font-semibold text-sm" style={{display: 'none'}}>
                       {review.author.charAt(0).toUpperCase()}
                     </div>

@@ -1,3 +1,7 @@
+---
+import Footer from '../components/Footer.astro';
+---
+
 <!doctype html>
 <html lang="es">
 	<head>
@@ -9,8 +13,12 @@
 		<meta name="keywords" content="café, cafeterías, Buenos Aires, especialidad, baristas" />
 		<title>Cafeboxd - Las mejores cafeterías de Buenos Aires</title>
 	</head>
+	
 	<body class="min-h-screen bg-white dark:bg-black text-zinc-900 dark:text-zinc-100">
 		<slot />
+
+		<!-- FOOTER -->
+		<Footer />
 	</body>
 </html>
 
@@ -23,15 +31,14 @@
 		scroll-behavior: smooth;
 	}
 	
-	/* Mejoras para el rendimiento */
 	* {
 		box-sizing: border-box;
 	}
-	
-	/* Optimización de fuentes */
+
 	body {
 		font-display: swap;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 	}
 </style>
+

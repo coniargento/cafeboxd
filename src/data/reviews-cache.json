@@ -1,0 +1,149 @@
+{
+  "timestamp": 1763062700247,
+  "reviews": [
+    {
+      "id": 0,
+      "author": {
+        "name": "Nataliia Tomakhiv",
+        "link": "https://www.google.com/maps/contrib/113038214517900288652?hl=en-US",
+        "contributor_id": "113038214517900288652",
+        "thumbnail": "https://lh3.googleusercontent.com/a-/ALV-UjVOW7PSfUx-Y-DVq0A9YEYQaalY86TKqD9e_Ij_f1HdDMNpwhcixg=s120-c-rp-mo-ba4-br100",
+        "local_guide": true,
+        "reviews": 53,
+        "photos": 219
+      },
+      "rating": 5,
+      "text": "",
+      "date": "",
+      "placeName": "Café",
+      "placeSlug": "cafe",
+      "verified": true
+    },
+    {
+      "id": 1,
+      "author": {
+        "name": "Gaffer",
+        "link": "https://www.google.com/maps/contrib/117638555231989253548?hl=en-US",
+        "contributor_id": "117638555231989253548",
+        "thumbnail": "https://lh3.googleusercontent.com/a-/ALV-UjVvo9wq8kI-un0cJnDsLE7pLxhCb-4-rEc1Be6pI9Y6U7OWlVY6=s120-c-rp-mo-ba4-br100",
+        "local_guide": true,
+        "reviews": 67,
+        "photos": 160
+      },
+      "rating": 5,
+      "text": "",
+      "date": "",
+      "placeName": "Café",
+      "placeSlug": "cafe",
+      "verified": true
+    },
+    {
+      "id": 2,
+      "author": {
+        "name": "Zareefa Ahmed",
+        "link": "https://www.google.com/maps/contrib/118325648348799743076?hl=en-US",
+        "contributor_id": "118325648348799743076",
+        "thumbnail": "https://lh3.googleusercontent.com/a-/ALV-UjUyQVdyTdJHw3iysN3XSZYPvd6Rx4Da7Et4fO70bjDbkWTekkxL=s120-c-rp-mo-ba3-br100",
+        "local_guide": true,
+        "reviews": 22,
+        "photos": 56
+      },
+      "rating": 5,
+      "text": "",
+      "date": "",
+      "placeName": "Café",
+      "placeSlug": "cafe",
+      "verified": true
+    },
+    {
+      "id": 3,
+      "author": {
+        "name": "Raul Ricano",
+        "link": "https://www.google.com/maps/contrib/115377573808281937078?hl=en-US",
+        "contributor_id": "115377573808281937078",
+        "thumbnail": "https://lh3.googleusercontent.com/a-/ALV-UjW7z-EVdhnNfUWXtxnJJ6cO3uvA-NTzwlW6yxWnQ0HVoJ_93ZRq=s120-c-rp-mo-ba5-br100",
+        "local_guide": true,
+        "reviews": 117,
+        "photos": 878
+      },
+      "rating": 4,
+      "text": "",
+      "date": "",
+      "placeName": "Café",
+      "placeSlug": "cafe",
+      "verified": true
+    },
+    {
+      "id": 4,
+      "author": {
+        "name": "Alexis Goncalves",
+        "link": "https://www.google.com/maps/contrib/110338237452618003257?hl=en-US",
+        "contributor_id": "110338237452618003257",
+        "thumbnail": "https://lh3.googleusercontent.com/a-/ALV-UjWEKKsduRzIL2LOQWuX8x3-ZYiOU1f4u6pY7pHIYnAhiHcKwVwWrw=s120-c-rp-mo-ba6-br100",
+        "local_guide": true,
+        "reviews": 277,
+        "photos": 1674
+      },
+      "rating": 5,
+      "text": "",
+      "date": "",
+      "placeName": "Café",
+      "placeSlug": "cafe",
+      "verified": true
+    },
+    {
+      "id": 5,
+      "author": {
+        "name": "Jensen Interceptor",
+        "link": "https://www.google.com/maps/contrib/112008059941057478993?hl=en-US",
+        "contributor_id": "112008059941057478993",
+        "thumbnail": "https://lh3.googleusercontent.com/a-/ALV-UjV9o-urewC_APe_5A2hsKnM0IFuB4RiLSoR2W3KgSx0VG4iR5s=s120-c-rp-mo-ba4-br100",
+        "local_guide": true,
+        "reviews": 104,
+        "photos": 288
+      },
+      "rating": 5,
+      "text": "",
+      "date": "",
+      "placeName": "Café",
+      "placeSlug": "cafe",
+      "verified": true
+    },
+    {
+      "id": 6,
+      "author": {
+        "name": "Justin CC",
+        "link": "https://www.google.com/maps/contrib/108478319550498992488?hl=en-US",
+        "contributor_id": "108478319550498992488",
+        "thumbnail": "https://lh3.googleusercontent.com/a/ACg8ocJWJIhcJk_pQYn3gPAiSdNI0za6ubMkIyveEJTEd4x90JqOOWY=s120-c-rp-mo-ba6-br100",
+        "local_guide": true,
+        "reviews": 250,
+        "photos": 1588
+      },
+      "rating": 5,
+      "text": "",
+      "date": "",
+      "placeName": "Café",
+      "placeSlug": "cafe",
+      "verified": true
+    },
+    {
+      "id": 7,
+      "author": {
+        "name": "Warren Bitner",
+        "link": "https://www.google.com/maps/contrib/108423575267539540647?hl=en-US",
+        "contributor_id": "108423575267539540647",
+        "thumbnail": "https://lh3.googleusercontent.com/a-/ALV-UjU6GJNuDDJzIC6Zt4UIYdJUIxr7drO3Qz__naxzRChfHA_Q-cQ4kw=s120-c-rp-mo-ba4-br100",
+        "local_guide": true,
+        "reviews": 76,
+        "photos": 354
+      },
+      "rating": 4,
+      "text": "",
+      "date": "",
+      "placeName": "Café",
+      "placeSlug": "cafe",
+      "verified": true
+    }
+  ]
+}

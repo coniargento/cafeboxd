@@ -1,75 +1,81 @@
-// SerpApi service para buscar cafés
-import { SERPAPI_CONFIG, getApiKey } from '../config/serpapi.js';
+// src/services/serpapi.js
+import { getApiKey } from '../config/serpapi.js';
 
 const SERPAPI_BASE_URL = 'https://serpapi.com/search.json';
 
-// Función para buscar cafés usando SerpApi
-export async function searchCafes(query = 'cafe de especialidad', location = SERPAPI_CONFIG.DEFAULT_LOCATION) {
+// Coordenadas del Obelisco (punto neutro para búsquedas en CABA)
+const LL = '-34.6037,-58.3816';
+const ZOOM = '13';
+
+/**
+ * 🔍 Búsqueda general de cafés (usa google_maps REAL)
+ */
+export async function searchCafes(query = 'cafe') {
   try {
-    // Construir parámetros de la consulta
     const params = new URLSearchParams({
+      engine: 'google_maps_search',
       q: query,
       location: location,
       hl: SERPAPI_CONFIG.DEFAULT_LANGUAGE,
       gl: SERPAPI_CONFIG.DEFAULT_COUNTRY,
       google_domain: SERPAPI_CONFIG.DEFAULT_DOMAIN,
-      api_key: getApiKey()
+      api_key: getApiKey(),
     });
-
+  
     const response = await fetch(`${SERPAPI_BASE_URL}?${params}`);
-    
+
     if (!response.ok) {
-      throw new Error(`Error en la API: ${response.status}`);
+      console.error('❌ Error API STATUS:', response.status);
+      throw new Error(`API ${response.status}`);
     }
 
     const data = await response.json();
-    
-    // Procesar los resultados de Google Local
     return processCafeResults(data);
-    
   } catch (error) {
-    console.error('Error buscando cafés:', error);
-    throw error;
+    console.error('❌ Error buscando cafés:', error);
+    return [];
   }
 }
 
-// Función para procesar los resultados de SerpApi y convertirlos al formato de Cafeboxd
+export async function searchCafesRaw(query) {
+  const params = new URLSearchParams({
+    engine: "google_maps",
+    type: "search",
+    q: query,
+    hl: "es",
+    gl: "ar",
+    google_domain: "google.com.ar",
+    api_key: getApiKey(),
+  });
+
+  const res = await fetch(`https://serpapi.com/search.json?${params}`);
+  const json = await res.json();
+
+  return json;
+}
+
+
+/**
+ * 🧠 Normalizar resultados de SerpApi
+ */
 function processCafeResults(data) {
   const cafes = [];
-  
-  // Extraer resultados de Google Local
-  if (data.local_results && data.local_results.places) {
-    data.local_results.places.forEach(place => {
-      cafes.push({
-        name: place.title || 'Sin nombre',
-        slug: generateSlug(place.title),
-        city: extractCity(place.address) || 'Buenos Aires',
-        rating: place.rating || 0,
-        image: place.thumbnail || '/cafes/fallback.jpg',
-        address: place.address || '',
-        phone: place.phone || '',
-        website: place.website || '',
-        reviews: place.reviews || 0,
-        price: place.price || '',
-        hours: place.hours || '',
-        type: place.type || 'Café'
-      });
-    });
-  }
 
-  // Si no hay resultados locales, usar resultados orgánicos como fallback
-  if (cafes.length === 0 && data.organic_results) {
-    data.organic_results.slice(0, 8).forEach(result => {
+  // ⚡ Formato REAL: data.local_results = array
+  if (Array.isArray(data.local_results)) {
+    data.local_results.forEach((p) => {
       cafes.push({
-        name: result.title || 'Sin nombre',
-        slug: generateSlug(result.title),
-        city: 'Buenos Aires',
-        rating: 4.0, // Rating por defecto
-        image: result.thumbnail || '/cafes/fallback.jpg',
-        address: result.snippet || '',
-        website: result.link || '',
-        reviews: 0,
-        type: 'Café'
+        name: p.title || 'Café',
+        slug: generateSlug(p.title || 'cafe'),
+        city: extractCity(p.address),
+        rating: p.rating || 0,
+        image: p.thumbnail || '/cafes/fallback.jpg',
+        address: p.address || '',
+        phone: p.phone || '',
+        website: p.website || '',
+        reviews: p.reviews || 0,
+        price: p.price || '',
+        type: p.type || 'Café'
       });
     });
   }
@@ -77,89 +83,63 @@ function processCafeResults(data) {
   return cafes;
 }
 
-// Función auxiliar para generar slug
+/** Slug SEO */
 function generateSlug(title) {
   return title
-    .toLowerCase()
+    ?.toLowerCase()
     .replace(/[^a-z0-9\s-]/g, '')
     .replace(/\s+/g, '-')
     .trim();
 }
 
-// Función auxiliar para extraer ciudad de la dirección
+/** Extraer barrio */
 function extractCity(address) {
   if (!address) return 'Buenos Aires';
-  
-  // Buscar patrones comunes de barrios de Buenos Aires
   const barrios = [
-    'Palermo', 'Recoleta', 'San Telmo', 'La Boca', 'Caballito',
-    'Barracas', 'Villa Crespo', 'Almagro', 'Boedo', 'Flores',
-    'Belgrano', 'Núñez', 'Puerto Madero', 'Monserrat', 'Retiro'
+    'Palermo','Recoleta','San Telmo','La Boca','Caballito',
+    'Barracas','Villa Crespo','Almagro','Boedo','Flores',
+    'Belgrano','Núñez','Puerto Madero','Monserrat','Retiro'
   ];
-  
-  for (const barrio of barrios) {
-    if (address.toLowerCase().includes(barrio.toLowerCase())) {
-      return barrio;
-    }
+
+  for (const b of barrios) {
+    if (address.toLowerCase().includes(b.toLowerCase())) return b;
   }
-  
   return 'Buenos Aires';
 }
 
-// Función para buscar cafés por barrio específico
+/** Búsqueda por barrio */
 export async function searchCafesByNeighborhood(neighborhood) {
-  const query = `cafe ${neighborhood} Buenos Aires`;
-  return await searchCafes(query, `${neighborhood}, Buenos Aires, Argentina`);
+  return await searchCafes(`cafe ${neighborhood}`);
 }
 
-// Función para buscar cafés por tipo
+/** Búsqueda por tipo */
 export async function searchCafesByType(type) {
-  const query = `${type} cafe Buenos Aires`;
-  return await searchCafes(query, 'Buenos Aires, Argentina');
+  return await searchCafes(`${type} cafe`);
 }
 
-// Función para obtener cafés populares de la semana
+/** Populares de la semana */
 export async function getPopularCafesThisWeek() {
-  try {
-    console.log('🔍 Obteniendo cafés populares de esta semana...');
-    
-    // Consultas para diferentes tipos de cafés populares
-    const queries = [
-      'cafe popular Buenos Aires',
-      'mejor cafe Buenos Aires',
-      'cafe recomendado Buenos Aires',
-      'cafe trending Buenos Aires'
-    ];
-    
-    const allCafes = [];
-    
-    // Buscar con diferentes consultas para obtener variedad
-    for (const query of queries) {
-      try {
-        const cafes = await searchCafes(query, 'Buenos Aires, Argentina');
-        allCafes.push(...cafes);
-        
-        // Pequeña pausa entre consultas
-        await new Promise(resolve => setTimeout(resolve, 200));
-        
-      } catch (error) {
-        console.warn(`Error en consulta "${query}":`, error);
-      }
-    }
-    
-    // Eliminar duplicados basándose en el nombre
-    const uniqueCafes = allCafes.filter((cafe, index, self) => 
-      index === self.findIndex(c => c.name === cafe.name)
-    );
-    
-    // Ordenar por rating (más populares primero)
-    const sortedCafes = uniqueCafes.sort((a, b) => (b.rating || 0) - (a.rating || 0));
-    
-    console.log('✅ Cafés populares obtenidos:', sortedCafes.length);
-    return sortedCafes.slice(0, 6); // Devolver solo los 6 mejores
-    
-  } catch (error) {
-    console.error('❌ Error obteniendo cafés populares:', error);
-    throw error;
+  const queries = [
+    'mejor cafe buenos aires',
+    'cafe recomendado buenos aires',
+    'cafe popular buenos aires'
+  ];
+
+  const all = [];
+  for (const q of queries) {
+    const r = await searchCafes(q);
+    all.push(...r);
+
+    await new Promise(res => setTimeout(res, 200));
   }
+
+  const unique = all.filter(
+    (c, i, arr) => i === arr.findIndex((x) => x.name === c.name)
+  );
+
+  return unique
+    .sort((a, b) => (b.rating || 0) - (a.rating || 0))
+    .slice(0, 12);
 }
+
+

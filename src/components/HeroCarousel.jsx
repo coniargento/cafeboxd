@@ -115,7 +115,7 @@ export default function HeroCarousel() {
         
         {/* Texto descriptivo debajo del botón */}
         <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto">
-          La red social para los amantes del café
+          Tu espacio para encontrar nuevos cafecitos
         </p>
         
       </div>

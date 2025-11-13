@@ -7,97 +7,56 @@ import SiteHeader from '../components/SiteHeader.astro';
 import HeroCarousel from '../components/HeroCarousel.jsx';
 import WelcomeUser from '../components/WelcomeUser.jsx';
 import ReviewsSection from '../components/ReviewsSection.jsx';
-
-// 🚀 Intentamos traer cafés populares desde tu endpoint interno /api/cafes
-let popularCafes = [];
-try {
-  const res = await fetch('/api/cafes');
-  if (res.ok) {
-    const data = await res.json();
-    const items = Array.isArray(data?.items) ? data.items : [];
-    // Ordenar por rating descendente y limitar a 6
-    popularCafes = items
-      .filter(Boolean)
-      .sort((a, b) => Number(b?.rating || 0) - Number(a?.rating || 0))
-      .slice(0, 6);
-  }
-} catch (e) {
-  console.error('Fallo /api/cafes, usando fallback local:', e);
-}
-
-// 🧩 Fallback si la API no responde o viene vacía
-if (!popularCafes.length) {
-  popularCafes = [
-    { name: "Mode Café", slug: "mode-cafe", city: "Barracas", rating: 4.6, image: "/cafes/mode.jpg" },
-    { name: "Puzzi", slug: "puzzi", city: "Barracas", rating: 4.6, image: "/cafes/puzzi.jpg" },
-    { name: "Cuervo", slug: "cuervo", city: "Palermo", rating: 4.9, image: "/cafes/cuervo.jpg" },
-    { name: "Nica cafe", slug: "nica-cafe", city: "San Telmo", rating: 3.5, image: "/cafes/nica.jpg" },
-    { name: "Amelia", slug: "amelia", city: "Caballito", rating: 3.9, image: "/cafes/amelia.jpg" },
-    { name: "Café de Barrio", slug: "cafe-barrio", city: "Villa Crespo", rating: 4.2, image: "/cafes/fallback.jpg" }
-  ];
-}
 ---
 
 <Layout>
   <SiteHeader activePage="/" />
 
-  <!-- 🌅 Hero con carrusel -->
   <HeroCarousel client:load />
 
-  <!-- 💬 Bienvenida usuario -->
   <div class="max-w-6xl mx-auto px-4 py-8">
     <WelcomeUser client:load />
   </div>
 
-  <!-- ☕️ Cafés destacados -->
   <section id="cafes" class="max-w-6xl mx-auto px-4 py-12">
     <div class="text-left mb-6">
-      <h2 class="text-2xl md:text-3xl font-bold mb-3 bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-white dark:to-zinc-300 bg-clip-text text-transparent">
+      <h2 class="text-2xl md:text-3xl font-bold mb-3">
         Cafés destacados
       </h2>
-      <p class="text-sm text-zinc-600 dark:text-zinc-400 max-w-xl">
-        Una selección de lugares con grandes reseñas de la comunidad
+      <p class="text-sm text-zinc-600">
+        Los cafes elegidos de la semana por el público
       </p>
     </div>
 
-    {popularCafes.length ? (
-      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        {popularCafes.map((cafe) => (
-          <a
-            href={`/cafe/${cafe.slug}`}
-            class="group block relative rounded-lg overflow-hidden border border-zinc-800 bg-zinc-950 hover:border-zinc-600 transition-all duration-300"
-          >
-            <div
-              class="aspect-[4/3] bg-cover bg-center"
-              style={`background-image:url(${cafe.image || '/cafes/fallback.jpg'})`}
-            ></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 right-0 p-3">
-              <h3 class="text-sm font-semibold text-white">{cafe.name}</h3>
-              <div class="flex items-center gap-2 text-xs text-zinc-300">
-                {cafe.city && <span>{cafe.city}</span>}
-                {typeof cafe.rating === 'number' && <span>· ★ {cafe.rating.toFixed(1)}</span>}
-              </div>
-            </div>
-          </a>
-        ))}
-      </div>
-    ) : (
-      <p class="text-zinc-400">Aún no hay cafés destacados. Probá más tarde.</p>
-    )}
+    <script type="module">
+      const container = document.getElementById("cafes-list");
 
-    <!-- CTA hacia Explorar -->
-    <div class="text-center mt-10">
-      <a
-        href="/explorar"
-        class="inline-block rounded-xl bg-white text-black px-6 py-3 font-medium hover:bg-zinc-200 transition"
-      >
-        Empezar — es gratis
-      </a>
-    </div>
+      async function load() {
+        try {
+          const res = await fetch('/api/cafes');
+          const data = await res.json();
+
+          if (!data.items?.length) {
+            container.innerHTML = "No hay cafés por ahora.";
+            return;
+          }
+
+          container.innerHTML = data.items.map(c => `
+            <a href="/cafe/${c.slug}" class="block border border-zinc-800 rounded-lg p-2 hover:border-zinc-500 transition">
+              <img src="${c.image || '/cafes/fallback.jpg'}" class="w-full aspect-square object-cover rounded">
+              <div class="mt-1 text-sm text-white">${c.name}</div>
+            </a>
+          `).join('');
+        } catch (e) {
+          console.error(e);
+          container.innerHTML = "Error cargando cafés.";
+        }
+      }
+
+      load();
+    </script>
   </section>
 
-  <!-- 🌟 Reseñas de la comunidad -->
   <div class="max-w-6xl mx-auto px-4 pb-16">
     <ReviewsSection client:load />
   </div>

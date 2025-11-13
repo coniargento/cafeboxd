@@ -5,105 +5,262 @@ import '../styles/fonts.css';
 import Layout from '../layouts/Layout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 
-// Fallback local por si la API falla (lee tu dump de SerpApi)
+// fallback local
 import raw from '../data/cafes.json';
 import { toCafesFromSerpRaw } from '../lib/normalize';
-const fallbackBase = (raw as any)?.default ?? (raw as any);
-const fallbackList = toCafesFromSerpRaw(fallbackBase);
+const fallbackList = toCafesFromSerpRaw(raw);
+
+// filas estilo Letterboxd
+const rows = [
+  {
+    id: 'popular-week',
+    title: 'Popular this week',
+    subtitle: 'Lo que más se está tomando estos días.',
+    highlight: true,
+  },
+  {
+    id: 'top-rated',
+    title: 'Mejor rating',
+    subtitle: 'Los cafés mejor valorados por la comunidad.',
+    highlight: false,
+  },
+  {
+    id: 'new-this-week',
+    title: 'Nuevas esta semana',
+    subtitle: 'Lugares que se suman al radar cafetero.',
+    highlight: false,
+  },
+  {
+    id: 'flat-white',
+    title: 'Flat white lovers',
+    subtitle: 'Para quienes viven entre espresso y leche texturizada.',
+    highlight: false,
+  },
+  {
+    id: 'brunch',
+    title: 'Brunch y café',
+    subtitle: 'Perfectos para domingo o para no cocinar.',
+    highlight: false,
+  },
+  {
+    id: 'study-work',
+    title: 'Para estudiar o trabajar',
+    subtitle: 'WiFi, enchufes y ambiente ideal para crear.',
+    highlight: false,
+  },
+  {
+    id: 'pet-friendly',
+    title: 'Pet-friendly',
+    subtitle: 'Para ir con compañía de cuatro patas.',
+    highlight: false,
+  },
+  {
+    id: 'pastry',
+    title: 'Pastelería destacada',
+    subtitle: 'Pastelería que vale la pena conocer.',
+    highlight: false,
+  },
+];
 ---
 
 <Layout>
   <SiteHeader activePage="/explorar" />
 
-  <section class="mx-auto max-w-6xl px-4 py-10">
-    <h1 class="text-3xl font-semibold mb-6">Explorar cafeterías</h1>
+  <main class="mx-auto max-w-6xl px-4 py-10 space-y-10">
+    <section class="space-y-2">
+      <h1 class="text-3xl md:text-4xl font-semibold tracking-tight">Explorar cafeterías</h1>
+      <p class="text-sm md:text-base text-zinc-400 max-w-2xl">
+        Descubrí tendencias, spots nuevos y categorías según la experiencia que buscás.
+      </p>
+    </section>
 
-    <!-- Filtros -->
-    <div class="mb-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
-      <input
-        id="q"
-        type="text"
-        placeholder="Buscar (ej: mode, flat white, san telmo)"
-        class="col-span-2 rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-2 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-zinc-400"
-      />
-      <select id="loc" class="rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-2 text-zinc-100">
-        <option value="Buenos Aires, Argentina">Buenos Aires</option>
-        <option value="Córdoba, Argentina">Córdoba</option>
-        <option value="Rosario, Argentina">Rosario</option>
-      </select>
-    </div>
+    <!-- JSON seguro -->
+    <script id="rows-data" type="application/json" set:html={JSON.stringify(rows)}></script>
+    <script id="fallback-data" type="application/json" set:html={JSON.stringify(fallbackList)}></script>
 
-    <div id="status" class="text-sm text-zinc-400 mb-4"></div>
+    {rows.map((row) => (
+      <section
+        id={row.id}
+        class={row.highlight
+          ? 'relative border border-zinc-800 bg-zinc-950/60 rounded-2xl px-4 py-6 md:px-6 md:py-7 space-y-4'
+          : 'relative space-y-3'}
+      >
+        <div class="flex items-baseline justify-between gap-3">
+          <div>
+            <h2 class={row.highlight ? 'text-xl md:text-2xl font-semibold' : 'text-lg md:text-xl font-semibold'}>
+              {row.title}
+            </h2>
+            {row.subtitle && <p class="text-xs md:text-sm text-zinc-400">{row.subtitle}</p>}
+          </div>
 
-    <!-- Grilla -->
-    <div id="grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
-  </section>
+          <span id={`status-${row.id}`} class="text-[11px] md:text-xs text-zinc-500">
+            Cargando...
+          </span>
+        </div>
+
+        <div class="relative">
+          <button
+            type="button"
+            class="row-arrow left-0 absolute top-1/2 -translate-y-1/2 -translate-x-1/2 z-10 hidden md:flex items-center justify-center rounded-full bg-black/80 border border-zinc-700 text-zinc-200 hover:bg-zinc-800 hover:border-zinc-500 h-8 w-8"
+            data-row={row.id}
+            data-dir="left"
+          >
+            ‹
+          </button>
+
+          <div
+            class="row-scroll flex gap-3 md:gap-4 overflow-x-auto scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-zinc-900 snap-x snap-mandatory pb-1"
+            data-row-scroll={row.id}
+          ></div>
+
+          <button
+            type="button"
+            class="row-arrow right-0 absolute top-1/2 translate-y-0 translate-x-1/2 z-10 hidden md:flex items-center justify-center rounded-full bg-black/80 border border-zinc-700 text-zinc-200 hover:bg-zinc-800 hover:border-zinc-500 h-8 w-8"
+            data-row={row.id}
+            data-dir="right"
+          >
+            ›
+          </button>
+        </div>
+      </section>
+    ))}
+  </main>
 
   <script type="module">
-    // Fallback embebido desde el server (para que nunca se rompa la página)
-    const FALLBACK = JSON.parse(`<!--${JSON.stringify(fallbackList)}-->`.replace(/<!--|-->/g, ''));
+    const ROWS = JSON.parse(document.getElementById('rows-data').textContent);
+    const FALLBACK = JSON.parse(document.getElementById('fallback-data').textContent);
 
-    const grid = document.getElementById('grid');
-    const status = document.getElementById('status');
-    const q = document.getElementById('q');
-    const loc = document.getElementById('loc');
-
-    function render(list) {
-      if (!grid) return;
-      if (!list.length) {
-        grid.innerHTML = '';
-        status.textContent = 'Sin resultados';
-        return;
+    function extractCity(address = "") {
+      const barrios = [
+        "Palermo","Recoleta","San Telmo","La Boca","Caballito",
+        "Barracas","Villa Crespo","Almagro","Boedo","Flores",
+        "Belgrano","Núñez","Puerto Madero","Monserrat","Retiro"
+      ];
+      for (const b of barrios) {
+        if (address.toLowerCase().includes(b.toLowerCase())) return b;
       }
-      status.textContent = `Encontrados: ${list.length}`;
-      grid.innerHTML = list.map(c => `
-        <a href="/cafe/${c.slug}" class="group block relative rounded-lg overflow-hidden border border-zinc-800 bg-zinc-950 hover:border-zinc-600 transition-all">
-          <div class="aspect-[4/3] bg-cover bg-center" style="background-image:url('${c.image || '/cafes/fallback.jpg'}')"></div>
-          <div class="p-3">
-            <h3 class="text-lg font-semibold text-white">${c.name}</h3>
-            <div class="flex items-center gap-2 text-sm text-zinc-300">
-              ${c.city ? `<span>${c.city}</span>` : ''}
-              ${typeof c.rating === 'number' ? `<span>· ★ ${c.rating.toFixed(1)}</span>` : ''}
-            </div>
-          </div>
-        </a>
-      `).join('');
+      return "Buenos Aires";
     }
 
-    function debounce(fn, delay=350) {
-      let t; return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), delay); };
+  function normalize(items) {
+    const seen = new Set();
+
+    let cafes = items.map((c) => ({
+      name: c.title || c.name || "Café sin nombre",
+      slug: (c.title || c.name || "cafe").toLowerCase().replace(/[^\w]+/g, "-"),
+      city: extractCity(c.address || ""),
+      image: c.thumbnail || c.image || "/cafes/fallback.jpg",
+      rating: Number(c.rating) || 0,
+    }));
+
+    // eliminar duplicados
+    cafes = cafes.filter((c) => {
+      if (seen.has(c.slug)) return false;
+      seen.add(c.slug);
+      return true;
+    });
+
+    // 💥 si vienen pocos items (1–3), los multiplicamos
+    if (cafes.length < 10) {
+      cafes = Array(10).fill(0).map((_, i) => {
+        const base = cafes[i % cafes.length];
+        return {
+          ...base,
+          slug: `${base.slug}-${i}`, // evitar colisiones de slug
+        };
+      });
+    }
+  return cafes;
+}
+
+    function smartQuery(row) {
+      switch (row.id) {
+        case "flat-white":
+          return "/api/cafes?q=flat+white";
+        case "brunch":
+          return "/api/cafes?q=brunch+cafe";
+        case "study-work":
+          return "/api/cafes?q=cafe+wifi";
+        case "pet-friendly":
+          return "/api/cafes?q=cafe+perros";
+        case "pastry":
+          return "/api/cafes?q=pasteleria+cafe";
+      }
     }
 
-    async function fetchCafes() {
-      const query = encodeURIComponent(q.value.trim());
-      const city = encodeURIComponent(loc.value);
-      const url = `/api/cafes?q=${query || 'cafe%20de%20especialidad'}&location=${city}&limit=24`;
+    async function loadRow(row) {
+      const status = document.getElementById(`status-${row.id}`);
+      const container = document.querySelector(`[data-row-scroll="${row.id}"]`);
+      const url = smartQuery(row);
 
-      status.textContent = 'Buscando cafés...';
+      if (status) status.textContent = "Cargando...";
+
       try {
         const res = await fetch(url);
-        if (!res.ok) throw new Error('API no disponible');
         const data = await res.json();
-        const items = Array.isArray(data?.items) ? data.items : [];
-        if (items.length) {
-          render(items);
-        } else {
-          // si la API no devolvió nada, uso fallback local
-          render(FALLBACK);
-          status.textContent = 'Mostrando sugerencias';
+
+        const items = Array.isArray(data.items) ? normalize(data.items) : [];
+
+        if (items.length >= 3) {
+          renderRow(row.id, items);
+          if (status) status.textContent = `Encontrados: ${items.length}`;
+          return;
         }
+
+        renderRow(row.id, normalize(FALLBACK));
+        if (status) status.textContent = "Mostrando sugerencias";
       } catch (e) {
         console.error(e);
-        render(FALLBACK);
-        status.textContent = 'Sin conexión a la API — mostrando sugerencias';
+        renderRow(row.id, normalize(FALLBACK));
+        if (status) status.textContent = "Sugerencias offline";
       }
     }
 
-    // Eventos
-    q.addEventListener('input', debounce(fetchCafes, 350));
-    loc.addEventListener('change', fetchCafes);
+    function renderRow(rowId, cafes) {
+      const container = document.querySelector(`[data-row-scroll="${rowId}"]`);
+      if (!container) return;
 
-    // Primera carga
-    fetchCafes();
+      container.innerHTML = cafes
+        .map(
+          (c) => `
+          <a href="/cafe/${c.slug}" class="group relative flex-shrink-0 snap-start w-40 md:w-48">
+            <div class="rounded-xl overflow-hidden border border-zinc-800 bg-zinc-950 group-hover:border-zinc-500 transition-all">
+              <div class="aspect-[3/4] bg-cover bg-center" style="background-image:url('${c.image}')"></div>
+              <div class="p-2.5">
+                <h3 class="text-[11px] md:text-xs font-semibold text-white line-clamp-2">${c.name}</h3>
+                <div class="mt-1 flex items-center gap-1.5 text-[10px] md:text-[11px] text-zinc-400">
+                  <span>${c.city}</span>
+                  <span>·</span>
+                  <span>★ ${c.rating.toFixed(1)}</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        `
+        )
+        .join("");
+    }
+
+    function setupArrows() {
+      document.querySelectorAll('.row-arrow').forEach((btn) => {
+        const rowId = btn.dataset.row;
+        const dir = btn.dataset.dir;
+        const container = document.querySelector(`[data-row-scroll="${rowId}"]`);
+        if (!container) return;
+
+        btn.addEventListener('click', () => {
+          const delta = container.clientWidth * 0.8;
+          container.scrollBy({
+            left: dir === 'left' ? -delta : delta,
+            behavior: 'smooth',
+          });
+        });
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      ROWS.forEach((row) => loadRow(row));
+      setupArrows();
+    });
   </script>
 </Layout>

@@ -34,8 +34,5 @@ export const SERPAPI_CONFIG = {
 
 // Función para obtener la API key (primero de variables de entorno, luego del config)
 export function getApiKey() {
-  const envKey = process.env.SERPAPI_KEY;
-  const configKey = SERPAPI_CONFIG.API_KEY;
-  
-  return envKey || configKey;
+  return import.meta.env.SERPAPI_KEY;
 }
