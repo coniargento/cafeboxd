@@ -1,6 +1,6 @@
 import { getApiKey } from '../../config/serpapi.js';
 
-export async function searchCafes(query: string) {
+export async function searchCafesRaw(query: string) {
   try {
     const apiKey = getApiKey();
 
@@ -11,29 +11,33 @@ export async function searchCafes(query: string) {
     const res = await fetch(url);
     const data = await res.json();
 
-    // LOG para DEBUG
-    console.log("SERPAPI RAW DATA:", Object.keys(data));
+    console.log("🔥 SERPAPI KEYS:", Object.keys(data));
 
-    // TU JSON REAL TIENE ESTO:
-    //   data.local_results = [...]
-    const results = data.local_results ?? [];
-
-    // Mapeo limpio
-    return results.map((item: any) => ({
-      id: item.place_id,
-      title: item.title,
-      rating: item.rating,
-      reviews: item.reviews,
-      address: item.address,
-      phone: item.phone,
-      website: item.website,
-      thumbnail: item.thumbnail,
-      description: item.description,
-      position: item.position,
-    }));
+    return data;
 
   } catch (err) {
-    console.error("ERROR searchCafes:", err);
-    return [];
+    console.error("❌ ERROR searchCafesRaw:", err);
+    return null;
   }
+}
+
+export async function searchCafes(query: string) {
+  const raw = await searchCafesRaw(query);
+
+  if (!raw) return [];
+
+  // ESTE ES EL BUENO — SIEMPRE EXISTE
+  const list = raw.local_results || [];
+
+  console.log("🔥 TOTAL CAFÉS:", list.length);
+
+  return list.map((item: any) => ({
+    id: item.place_id,
+    slug: item.place_id,
+    name: item.title,
+    rating: item.rating || 0,
+    reviews: item.reviews || 0,
+    address: item.address,
+    image: item.thumbnail || "/cafes/fallback.jpg"
+  }));
 }

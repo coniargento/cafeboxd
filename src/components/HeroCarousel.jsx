@@ -42,7 +42,7 @@ export default function HeroCarousel() {
     }
   ];
 
-  // Rotación automática cada 4 segundos
+  // cambian las fotos cada 4 segundos
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % cafes.length);
@@ -90,9 +90,7 @@ export default function HeroCarousel() {
           Cafeboxd
         </h1>
         <p className="text-2xl md:text-3xl text-zinc-300 mb-4 max-w-3xl mx-auto leading-relaxed">
-        Calificá cada taza.
-        Guardá nuevos spots.
-        Contá qué vale la pena.
+        Guardá y descubrí nuevos spots.
         </p>
         {/* Nombre de la cafetería vertical en el costado derecho */}
         <div className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20">
@@ -109,7 +107,7 @@ export default function HeroCarousel() {
             id="main-login-btn"
             className="bg-pink-500 text-white font-bold py-4 px-8 rounded-xl hover:bg-pink-600 transition-all duration-300 transform hover:scale-105 text-lg"
           >
-            Arrancá ahora — es gratis :)
+            Explorá ahora — es gratis :)
           </button>
         </div>
         

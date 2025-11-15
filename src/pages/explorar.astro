@@ -7,59 +7,40 @@ import SiteHeader from '../components/SiteHeader.astro';
 
 // fallback local
 import raw from '../data/cafes.json';
-import { toCafesFromSerpRaw } from '../lib/normalize';
-const fallbackList = toCafesFromSerpRaw(raw);
+const FALLBACK = raw;
 
-// filas estilo Letterboxd
+// FILAS REALES, basadas en tus categorías JSON
 const rows = [
   {
     id: 'popular-week',
-    title: 'Popular this week',
+    title: 'Popular esta semana',
     subtitle: 'Lo que más se está tomando estos días.',
-    highlight: true,
+    category: 'popular_week'
   },
   {
     id: 'top-rated',
-    title: 'Mejor rating',
+    title: 'Mejor calificación',
     subtitle: 'Los cafés mejor valorados por la comunidad.',
-    highlight: false,
-  },
-  {
-    id: 'new-this-week',
-    title: 'Nuevas esta semana',
-    subtitle: 'Lugares que se suman al radar cafetero.',
-    highlight: false,
-  },
-  {
-    id: 'flat-white',
-    title: 'Flat white lovers',
-    subtitle: 'Para quienes viven entre espresso y leche texturizada.',
-    highlight: false,
+    category: 'top_rated'
   },
   {
     id: 'brunch',
     title: 'Brunch y café',
-    subtitle: 'Perfectos para domingo o para no cocinar.',
-    highlight: false,
+    subtitle: 'Ideales para almorzar rico.',
+    category: 'brunch'
   },
   {
     id: 'study-work',
     title: 'Para estudiar o trabajar',
-    subtitle: 'WiFi, enchufes y ambiente ideal para crear.',
-    highlight: false,
-  },
-  {
-    id: 'pet-friendly',
-    title: 'Pet-friendly',
-    subtitle: 'Para ir con compañía de cuatro patas.',
-    highlight: false,
+    subtitle: 'WiFi, enchufes y ambiente tranquilo.',
+    category: 'study_work'
   },
   {
     id: 'pastry',
     title: 'Pastelería destacada',
-    subtitle: 'Pastelería que vale la pena conocer.',
-    highlight: false,
-  },
+    subtitle: 'Para fans de lo dulce.',
+    category: 'dessert'
+  }
 ];
 ---
 
@@ -70,27 +51,24 @@ const rows = [
     <section class="space-y-2">
       <h1 class="text-3xl md:text-4xl font-semibold tracking-tight">Explorar cafeterías</h1>
       <p class="text-sm md:text-base text-zinc-400 max-w-2xl">
-        Descubrí tendencias, spots nuevos y categorías según la experiencia que buscás.
+        Descubrí tendencias y spots nuevos según la experiencia que buscás.
       </p>
     </section>
 
-    <!-- JSON seguro -->
+    <!-- Datos JSON embebidos -->
     <script id="rows-data" type="application/json" set:html={JSON.stringify(rows)}></script>
-    <script id="fallback-data" type="application/json" set:html={JSON.stringify(fallbackList)}></script>
+    <script id="fallback-data" type="application/json" set:html={JSON.stringify(FALLBACK)}></script>
 
     {rows.map((row) => (
-      <section
-        id={row.id}
-        class={row.highlight
-          ? 'relative border border-zinc-800 bg-zinc-950/60 rounded-2xl px-4 py-6 md:px-6 md:py-7 space-y-4'
-          : 'relative space-y-3'}
-      >
+      <section id={row.id} class="relative space-y-3">
         <div class="flex items-baseline justify-between gap-3">
           <div>
-            <h2 class={row.highlight ? 'text-xl md:text-2xl font-semibold' : 'text-lg md:text-xl font-semibold'}>
+            <h2 class="text-lg md:text-xl font-semibold">
               {row.title}
             </h2>
-            {row.subtitle && <p class="text-xs md:text-sm text-zinc-400">{row.subtitle}</p>}
+            {row.subtitle && (
+              <p class="text-xs md:text-sm text-zinc-400">{row.subtitle}</p>
+            )}
           </div>
 
           <span id={`status-${row.id}`} class="text-[11px] md:text-xs text-zinc-500">
@@ -99,6 +77,7 @@ const rows = [
         </div>
 
         <div class="relative">
+          <!-- Flecha izquierda -->
           <button
             type="button"
             class="row-arrow left-0 absolute top-1/2 -translate-y-1/2 -translate-x-1/2 z-10 hidden md:flex items-center justify-center rounded-full bg-black/80 border border-zinc-700 text-zinc-200 hover:bg-zinc-800 hover:border-zinc-500 h-8 w-8"
@@ -108,11 +87,13 @@ const rows = [
             ‹
           </button>
 
+          <!-- Contenedor scroll -->
           <div
             class="row-scroll flex gap-3 md:gap-4 overflow-x-auto scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-zinc-900 snap-x snap-mandatory pb-1"
             data-row-scroll={row.id}
           ></div>
 
+          <!-- Flecha derecha -->
           <button
             type="button"
             class="row-arrow right-0 absolute top-1/2 translate-y-0 translate-x-1/2 z-10 hidden md:flex items-center justify-center rounded-full bg-black/80 border border-zinc-700 text-zinc-200 hover:bg-zinc-800 hover:border-zinc-500 h-8 w-8"
@@ -130,92 +111,12 @@ const rows = [
     const ROWS = JSON.parse(document.getElementById('rows-data').textContent);
     const FALLBACK = JSON.parse(document.getElementById('fallback-data').textContent);
 
-    function extractCity(address = "") {
-      const barrios = [
-        "Palermo","Recoleta","San Telmo","La Boca","Caballito",
-        "Barracas","Villa Crespo","Almagro","Boedo","Flores",
-        "Belgrano","Núñez","Puerto Madero","Monserrat","Retiro"
-      ];
-      for (const b of barrios) {
-        if (address.toLowerCase().includes(b.toLowerCase())) return b;
-      }
-      return "Buenos Aires";
+    // Filtrar cafés según la categoría del JSON
+    function filterByCategory(category) {
+      return FALLBACK.filter((c) => c.category === category);
     }
 
-  function normalize(items) {
-    const seen = new Set();
-
-    let cafes = items.map((c) => ({
-      name: c.title || c.name || "Café sin nombre",
-      slug: (c.title || c.name || "cafe").toLowerCase().replace(/[^\w]+/g, "-"),
-      city: extractCity(c.address || ""),
-      image: c.thumbnail || c.image || "/cafes/fallback.jpg",
-      rating: Number(c.rating) || 0,
-    }));
-
-    // eliminar duplicados
-    cafes = cafes.filter((c) => {
-      if (seen.has(c.slug)) return false;
-      seen.add(c.slug);
-      return true;
-    });
-
-    // 💥 si vienen pocos items (1–3), los multiplicamos
-    if (cafes.length < 10) {
-      cafes = Array(10).fill(0).map((_, i) => {
-        const base = cafes[i % cafes.length];
-        return {
-          ...base,
-          slug: `${base.slug}-${i}`, // evitar colisiones de slug
-        };
-      });
-    }
-  return cafes;
-}
-
-    function smartQuery(row) {
-      switch (row.id) {
-        case "flat-white":
-          return "/api/cafes?q=flat+white";
-        case "brunch":
-          return "/api/cafes?q=brunch+cafe";
-        case "study-work":
-          return "/api/cafes?q=cafe+wifi";
-        case "pet-friendly":
-          return "/api/cafes?q=cafe+perros";
-        case "pastry":
-          return "/api/cafes?q=pasteleria+cafe";
-      }
-    }
-
-    async function loadRow(row) {
-      const status = document.getElementById(`status-${row.id}`);
-      const container = document.querySelector(`[data-row-scroll="${row.id}"]`);
-      const url = smartQuery(row);
-
-      if (status) status.textContent = "Cargando...";
-
-      try {
-        const res = await fetch(url);
-        const data = await res.json();
-
-        const items = Array.isArray(data.items) ? normalize(data.items) : [];
-
-        if (items.length >= 3) {
-          renderRow(row.id, items);
-          if (status) status.textContent = `Encontrados: ${items.length}`;
-          return;
-        }
-
-        renderRow(row.id, normalize(FALLBACK));
-        if (status) status.textContent = "Mostrando sugerencias";
-      } catch (e) {
-        console.error(e);
-        renderRow(row.id, normalize(FALLBACK));
-        if (status) status.textContent = "Sugerencias offline";
-      }
-    }
-
+    // Render de cada fila
     function renderRow(rowId, cafes) {
       const container = document.querySelector(`[data-row-scroll="${rowId}"]`);
       if (!container) return;
@@ -223,13 +124,13 @@ const rows = [
       container.innerHTML = cafes
         .map(
           (c) => `
-          <a href="/cafe/${c.slug}" class="group relative flex-shrink-0 snap-start w-40 md:w-48">
+          <a href="/cafe/${c.place_id}" class="group relative flex-shrink-0 snap-start w-40 md:w-48">
             <div class="rounded-xl overflow-hidden border border-zinc-800 bg-zinc-950 group-hover:border-zinc-500 transition-all">
-              <div class="aspect-[3/4] bg-cover bg-center" style="background-image:url('${c.image}')"></div>
+              <div class="aspect-[3/4] bg-cover bg-center" style="background-image:url('${c.thumbnail}')"></div>
               <div class="p-2.5">
-                <h3 class="text-[11px] md:text-xs font-semibold text-white line-clamp-2">${c.name}</h3>
+                <h3 class="text-[11px] md:text-xs font-semibold text-white line-clamp-2">${c.title}</h3>
                 <div class="mt-1 flex items-center gap-1.5 text-[10px] md:text-[11px] text-zinc-400">
-                  <span>${c.city}</span>
+                  <span>${c.address.split(',')[1] || ''}</span>
                   <span>·</span>
                   <span>★ ${c.rating.toFixed(1)}</span>
                 </div>
@@ -238,15 +139,31 @@ const rows = [
           </a>
         `
         )
-        .join("");
+        .join('');
     }
 
+    // Cargar cada fila usando SOLO datos locales
+    function loadRows() {
+      ROWS.forEach((row) => {
+        const status = document.getElementById(`status-${row.id}`);
+        const items = filterByCategory(row.category);
+
+        if (items.length > 0) {
+          renderRow(row.id, items);
+          status.textContent = `${items.length} lugares`;
+        } else {
+          renderRow(row.id, FALLBACK);
+          status.textContent = "Sin categoría — mostrando todos";
+        }
+      });
+    }
+
+    // Configurar flechas
     function setupArrows() {
       document.querySelectorAll('.row-arrow').forEach((btn) => {
         const rowId = btn.dataset.row;
         const dir = btn.dataset.dir;
         const container = document.querySelector(`[data-row-scroll="${rowId}"]`);
-        if (!container) return;
 
         btn.addEventListener('click', () => {
           const delta = container.clientWidth * 0.8;
@@ -259,7 +176,7 @@ const rows = [
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      ROWS.forEach((row) => loadRow(row));
+      loadRows();
       setupArrows();
     });
   </script>

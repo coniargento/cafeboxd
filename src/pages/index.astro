@@ -6,58 +6,19 @@ import Layout from '../layouts/Layout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import HeroCarousel from '../components/HeroCarousel.jsx';
 import WelcomeUser from '../components/WelcomeUser.jsx';
-import ReviewsSection from '../components/ReviewsSection.jsx';
+import HomepageIntro from "../components/HomepageIntro.jsx";
 ---
 
 <Layout>
   <SiteHeader activePage="/" />
-
   <HeroCarousel client:load />
-
   <div class="max-w-6xl mx-auto px-4 py-8">
     <WelcomeUser client:load />
   </div>
 
-  <section id="cafes" class="max-w-6xl mx-auto px-4 py-12">
-    <div class="text-left mb-6">
-      <h2 class="text-2xl md:text-3xl font-bold mb-3">
-        Cafés destacados
-      </h2>
-      <p class="text-sm text-zinc-600">
-        Los cafes elegidos de la semana por el público
-      </p>
-    </div>
+  <HomepageIntro client:load />
 
-    <script type="module">
-      const container = document.getElementById("cafes-list");
-
-      async function load() {
-        try {
-          const res = await fetch('/api/cafes');
-          const data = await res.json();
-
-          if (!data.items?.length) {
-            container.innerHTML = "No hay cafés por ahora.";
-            return;
-          }
-
-          container.innerHTML = data.items.map(c => `
-            <a href="/cafe/${c.slug}" class="block border border-zinc-800 rounded-lg p-2 hover:border-zinc-500 transition">
-              <img src="${c.image || '/cafes/fallback.jpg'}" class="w-full aspect-square object-cover rounded">
-              <div class="mt-1 text-sm text-white">${c.name}</div>
-            </a>
-          `).join('');
-        } catch (e) {
-          console.error(e);
-          container.innerHTML = "Error cargando cafés.";
-        }
-      }
-
-      load();
-    </script>
   </section>
 
-  <div class="max-w-6xl mx-auto px-4 pb-16">
-    <ReviewsSection client:load />
   </div>
 </Layout>

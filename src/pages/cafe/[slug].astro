@@ -1,66 +1,176 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
-import raw from '../../data/cafes.json';
-import { toCafesFromSerpRaw } from '../../lib/normalize';
 
-const base = (raw as any).default ?? (raw as any);
-const items = toCafesFromSerpRaw(base);
+// Importar JSON local
+import cafes from '../../data/cafes.json';
 
-export async function getStaticPaths() {
-  return items.map((c) => ({
-    params: { slug: c.slug },
-    props: { cafe: c },
+// Generar paths estáticos para cada café
+export function getStaticPaths() {
+  return cafes.map((cafe) => ({
+    params: { slug: cafe.place_id },
+    props: { cafe }
   }));
 }
 
-const { cafe } = Astro.props as { cafe: import('../../lib/normalize').Cafe };
-const { slug } = Astro.params;
+// Café actual
+const { cafe } = Astro.props;
 ---
 
 <Layout>
   <SiteHeader />
 
   <div class="mx-auto max-w-5xl px-4 py-6">
-    {cafe ? (
-      <>
-        <a href="/" class="text-sm text-zinc-400 hover:text-zinc-200">&larr; Volver</a>
 
-        <div class="mt-4 rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-950">
-          <div
-            class="aspect-[16/9] bg-center bg-cover"
-            style={`background-image: url(${cafe.image || '/cafes/fallback.jpg'})`}
-            aria-label={cafe.name}
-          />
-        </div>
+    <!-- Título + Rating -->
+    <div class="mt-6 flex items-center gap-3 flex-wrap">
+      <h1 class="text-3xl md:text-4xl font-semibold" style="color:#b9855b;">
+        {cafe.title}
+      </h1>
 
-        <h1 class="mt-6 text-3xl font-semibold">{cafe.name}</h1>
-        <p class="text-zinc-400">{cafe.city}</p>
-        <div class="mt-2 inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-black/70 px-3 py-1 text-sm">
-          <span>★ {typeof cafe.rating === 'number' ? cafe.rating.toFixed(1) : '-'}</span>
-        </div>
-
-        <div class="mt-8 grid gap-6 md:grid-cols-3">
-          <div class="md:col-span-2 space-y-4">
-            <h2 class="text-xl font-semibold">Reseñas</h2>
-            <p class="text-zinc-400">Próximamente: sistema de reseñas locales.</p>
-          </div>
-          <aside class="space-y-4">
-            <h3 class="text-lg font-semibold">Información</h3>
-            <ul class="text-zinc-300 text-sm space-y-1">
-              {cafe.city && <li><strong>Ciudad:</strong> {cafe.city}</li>}
-              {typeof cafe.rating === 'number' && <li><strong>Rating:</strong> {cafe.rating.toFixed(1)}</li>}
-              <li><strong>Slug:</strong> {slug}</li>
-            </ul>
-          </aside>
-        </div>
-      </>
-    ) : (
-      <div class="rounded-xl border border-zinc-800 bg-zinc-900 p-6">
-        <h1 class="text-2xl font-semibold">Cafetería no encontrada</h1>
-        <p class="text-zinc-400 mt-2">Volvé al listado para explorar otras opciones.</p>
+      <div class="flex items-center gap-1 text-xl md:text-2xl text-amber-400">
+        <span>★</span>
+        <span style="color:#000; font-size:1rem;" class="md:text-lg">
+          {cafe.rating.toFixed(1)}
+        </span>
       </div>
+    </div>
+
+
+    <!-- CARRUSEL -->
+    <div class="relative w-full mt-4">
+      <div
+        id="carousel"
+        class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth rounded-2xl border border-zinc-800 bg-zinc-950"
+      >
+        {(cafe.images || [cafe.thumbnail]).map((img) => (
+          <div class="flex-shrink-0 snap-center w-full">
+            <img src={img} alt={cafe.title} class="w-full h-[320px] md:h-[420px] object-cover" />
+          </div>
+        ))}
+      </div>
+
+      <button
+        id="prev"
+        class="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-black/90 border border-zinc-600 text-white rounded-full h-10 w-10 items-center justify-center"
+      >
+        ‹
+      </button>
+
+      <button
+        id="next"
+        class="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-black/90 border border-zinc-600 text-white rounded-full h-10 w-10 items-center justify-center"
+      >
+        ›
+      </button>
+    </div>
+
+    <!-- Script del carrusel -->
+    <script>
+      const carousel = document.getElementById("carousel");
+      const prev = document.getElementById("prev");
+      const next = document.getElementById("next");
+
+      function scrollCarousel(dir) {
+        const width = carousel.clientWidth;
+        carousel.scrollBy({ left: dir * width, behavior: "smooth" });
+      }
+
+      prev?.addEventListener("click", () => scrollCarousel(-1));
+      next?.addEventListener("click", () => scrollCarousel(1));
+    </script>
+
+    <!-- DESCRIPCIÓN -->
+    {cafe.description && (
+      <p style="color:#000; font-size:1rem;" class="md:text-lg mt-6 leading-relaxed">
+        {cafe.description}
+      </p>
     )}
+
+    <!-- ======================= -->
+    <!--        REVIEWS          -->
+    <!-- ======================= -->
+
+    <!-- Título -->
+    <div class="mt-10">
+      <h2 class="text-2xl font-semibold mb-4" style="color:#b9855b;">
+        Algunas opiniones que escuchamos por ahí…
+      </h2>
+    </div>
+
+    <!-- GRID DE 6 REVIEWS (2 filas de 3) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {cafe.reviews_list.map((rev) => (
+        <div class="bg-white border border-zinc-200 rounded-xl p-4 shadow-sm flex flex-col gap-3">
+
+          <div class="flex items-center gap-3">
+            <img src={rev.photo} class="w-10 h-10 rounded-full object-cover" />
+            <div>
+              <p class="font-semibold text-zinc-800">{rev.user}</p>
+              <p class="text-xs text-zinc-500">{rev.time}</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-1 text-amber-400 text-sm">
+            {Array.from({ length: rev.rating }).map(() => "★")}
+            {Array.from({ length: 5 - rev.rating }).map(() => "☆")}
+          </div>
+
+          <p class="text-zinc-700 text-sm leading-relaxed">{rev.text}</p>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- BOTÓN VER MÁS RESEÑAS -->
+    <a
+      href="https://www.google.com/maps/place/CUADRA/@-34.5499298,-58.4668093,17z/data=!4m8!3m7!1s0x95bcb55e53620427:0xf0b8177afa1c5506!8m2!3d-34.5499343!4d-58.4619384!9m1!1b1!16s%2Fg%2F11j4mtrn0t?entry=ttu"
+      target="_blank"
+      class="inline-block mt-4 px-4 py-2 rounded-lg bg-zinc-900 text-white text-sm hover:bg-zinc-700 transition"
+    >
+      Ver más reseñas →
+    </a>
+
+    <!-- MAPA EMBEBIDO -->
+    <iframe
+      width="100%"
+      height="280"
+      style="border:0; border-radius:12px; margin-top:24px;"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      src={`https://www.google.com/maps?q=${encodeURIComponent(cafe.address)}&output=embed`}>
+    </iframe>
+
+    <!-- REDES -->
+    {cafe.socials.instagram && (
+      <a
+        href={cafe.socials.instagram}
+        target="_blank"
+        aria-label="Instagram"
+        class="flex items-center gap-2 text-zinc-700 hover:text-zinc-900 transition"
+      >
+        <span class="text-sm font-medium">
+          chusmeá las cosas que tienen
+        </span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-instagram"
+        >
+          <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+  
+      </a>
+    )}    
   </div>
 </Layout>
-

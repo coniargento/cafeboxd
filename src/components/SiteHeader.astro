@@ -1,10 +1,11 @@
 ---
-import ThemeSwitcher from './ThemeSwitcher.astro';
 import UserBadge from './UserBadge.jsx';
 
 // Enlaces principales
 const links = [
   { href: '/explorar', label: 'Explorar' },
+  { href: '/nosotros', label: 'Sobre nosotros' },
+  { href: '/contacto', label: 'Contacto' }
 ];
 
 // Prop opcional para resaltar el link activo
@@ -34,8 +35,7 @@ const { activePage = '/' } = Astro.props;
 
     <!-- Panel derecho -->
     <div class="flex items-center gap-3">
-      <UserBadge client:load />   
-      <ThemeSwitcher />                                    
+      <UserBadge client:load />                                  
       <button id="hamburger-menu" class="sm:hidden text-2xl leading-none">☰</button>
     </div>
   </nav>
