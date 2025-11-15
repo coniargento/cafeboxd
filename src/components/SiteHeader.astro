@@ -1,6 +1,4 @@
 ---
-import UserBadge from './UserBadge.jsx';
-
 // Enlaces principales
 const links = [
   { href: '/explorar', label: 'Explorar' },
@@ -32,13 +30,6 @@ const { activePage = '/' } = Astro.props;
         </a>
       ))}
     </div>
-
-    <!-- Panel derecho -->
-    <div class="flex items-center gap-3">
-      <UserBadge client:load />                                  
-      <button id="hamburger-menu" class="sm:hidden text-2xl leading-none">☰</button>
-    </div>
-  </nav>
 
   <!-- Menú mobile -->
   <div id="mobile-links" class="hidden font-light w-full">

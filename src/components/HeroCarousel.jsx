@@ -51,21 +51,6 @@ export default function HeroCarousel() {
     return () => clearInterval(interval);
   }, [cafes.length]);
 
-  // Conectar el botón de login
-  useEffect(() => {
-    const mainLoginBtn = document.getElementById('main-login-btn');
-    if (mainLoginBtn) {
-      mainLoginBtn.addEventListener('click', () => {
-        // Simular click en el botón de login del header
-        const headerLoginBtn = document.querySelector('[data-login-trigger]');
-        if (headerLoginBtn) {
-          headerLoginBtn.click();
-        }
-      });
-    }
-  }, []);
-
-
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
       {/* Background con gradiente overlay */}
@@ -95,21 +80,19 @@ export default function HeroCarousel() {
         {/* Nombre de la cafetería vertical en el costado derecho */}
         <div className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20">
           <div className="writing-vertical text-white text-2xl md:text-3xl font-bold tracking-wider opacity-90">
-            <a href={`/cafe/${cafes[currentSlide].name.toLowerCase().replace(/\s+/g, '-')}/`} className="text-white hover:text-amber-400 transition-colors duration-300">
-              {cafes[currentSlide].name}
-            </a>
+          <div className="pointer-events-none absolute right-6 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center">
+  <div className="writing-vertical text-white/60 text-3xl md:text-4xl font-bold tracking-widest select-none right-10">
+    {cafes[currentSlide].name}
+  </div>
+</div>
+
           </div>
         </div>
         
-        {/* Main CTA - Solo botón */}
-        <div className="mb-4">
-          <button 
-            id="main-login-btn"
-            className="bg-pink-500 text-white font-bold py-4 px-8 rounded-xl hover:bg-pink-600 transition-all duration-300 transform hover:scale-105 text-lg"
-          >
-            Explorá ahora — es gratis :)
-          </button>
-        </div>
+        <a href="/explorar" className="inline-block bg-pink-500 text-white font-bold py-4 px-8 rounded-xl hover:bg-pink-600 transition-all duration-300 transform hover:scale-105 text-lg">
+        Explorá ahora — es gratis :)
+        </a>
+
         
         {/* Texto descriptivo debajo del botón */}
         <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto">

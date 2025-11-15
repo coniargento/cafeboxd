@@ -1,0 +1,92 @@
+---
+import '../styles/global.css';
+import '../styles/fonts.css';
+
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+---
+
+<Layout>
+  <SiteHeader />
+
+  <div class="mx-auto max-w-4xl px-4 py-12 text-zinc-800">
+
+    <!-- TÍTULO -->
+    <h1 class="text-4xl font-semibold mb-4" style="color:#b9855b;">
+      Contacto
+    </h1>
+
+    <p class="text-lg text-zinc-600 leading-relaxed max-w-2xl">
+      Si querés sumar tu cafetería, enviarnos información actualizada o proponer una colaboración,
+      este es el lugar indicado. Nos encanta conocer nuevos proyectos y acompañar el crecimiento
+      del café de especialidad en Buenos Aires.
+    </p>
+
+
+    <!-- BLOQUE DE CONTACTO -->
+    <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+
+      <!-- FORMULARIO -->
+      <div class="bg-white border border-zinc-200 rounded-xl p-6 shadow-sm">
+        <h2 class="text-xl font-semibold mb-4" style="color:#b9855b;">Escribinos</h2>
+
+        <form class="flex flex-col gap-4" name="contact" netlify>
+          <input 
+            type="text" 
+            name="nombre" 
+            placeholder="Tu nombre"
+            class="border border-zinc-300 rounded-lg p-2 focus:outline-none focus:ring-1 focus:ring-amber-400"
+            required
+          />
+          <input 
+            type="email" 
+            name="email" 
+            placeholder="Tu email"
+            class="border border-zinc-300 rounded-lg p-2 focus:outline-none focus:ring-1 focus:ring-amber-400"
+            required
+          />
+          <textarea 
+            name="mensaje"
+            rows="4"
+            placeholder="Contanos en qué podemos ayudarte"
+            class="border border-zinc-300 rounded-lg p-2 focus:outline-none focus:ring-1 focus:ring-amber-400"
+            required
+          ></textarea>
+
+          <button 
+            type="submit"
+            class="w-full bg-zinc-900 text-white py-2 rounded-lg hover:bg-zinc-700 transition"
+          >
+            Enviar mensaje
+          </button>
+        </form>
+      </div>
+
+
+      <!-- INFORMACIÓN Y CTA -->
+      <div class="flex flex-col justify-between">
+
+        <div>
+          <h2 class="text-xl font-semibold mb-3" style="color:#b9855b;">
+            ¿Querés sumar tu café?
+          </h2>
+
+          <p class="text-zinc-600 leading-relaxed mb-4">
+            Si tenés una cafetería y querés aparecer en la guía, actualizar tus fotos, menú
+            o información, escribinos por cualquiera de nuestras vías de contacto.
+          </p>
+
+          <p class="text-zinc-600 leading-relaxed">
+            También recibimos recomendaciones de usuarios, sugerencias y colaboraciones.
+            ¡Nos encanta estar en contacto!
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</Layout>
+
